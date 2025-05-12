@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Profesor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .user-icon {
+            font-size: 3em;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            margin-top: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <i class="fas fa-chalkboard-teacher fa-3x user-icon"></i>
+        <h1>Iniciar Sesión Profesor</h1>
+        <form id="login-form-profesor">
+            <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+            <button type="button" onclick="window.location.href='inicio_sesion_ninos.html'" class="back-button">Volver a Selección de Usuario</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginFormProfesor = document.getElementById('login-form-profesor');
+
+            loginFormProfesor.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Aquí iría la lógica real de autenticación del profesor
+                if (username === 'profesor1' && password === 'claveprofesor') {
+                    window.location.href = 'panel_profesor.html'; // Redirigir al panel del profesor
+                } else {
+                    alert('Credenciales incorrectas. Intente de nuevo.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

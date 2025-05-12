@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Profesor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-icon {
+            color: #f3f3ee;
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .user-details h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+        }
+
+        .logout-btn {
+            background: none;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .main-nav {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .main-nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .main-nav li a:hover,
+        .main-nav li a.active {
+            background-color: #0056b3;
+        }
+
+        .content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .module-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .module-container h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Estilos para las secciones específicas (se irán creando) */
+        #estadisticas,
+        #alumnos,
+        #progresos,
+        #asimilacion,
+        #atencion {
+            display: none; /* Ocultar al inicio */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <div class="user-info">
+                <i class="fas fa-user-tie fa-2x avatar-icon"></i>
+                <div class="user-details">
+                    <h2>Profesor [Nombre del Profesor]</h2>
+                    <p>ID: [ID del Profesor]</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="window.location.href='inicio_sesion_profesor.html'">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </button>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#estadisticas" class="active"><i class="fas fa-chart-bar"></i> Estadísticas</a></li>
+                <li><a href="#alumnos"><i class="fas fa-users"></i> Alumnos</a></li>
+                <li><a href="#progresos"><i class="fas fa-tasks"></i> Progresos</a></li>
+                <li><a href="#asimilacion"><i class="fas fa-lightbulb"></i> Asimilación</a></li>
+                <li><a href="#atencion"><i class="fas fa-exclamation-triangle"></i> Atención</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="estadisticas" class="module-container">
+                <h2><i class="fas fa-chart-bar"></i> Estadísticas Generales</h2>
+                <p>Información sobre el rendimiento general de los alumnos.</p>
+            </section>
+
+            <section id="alumnos" class="module-container">
+                <h2><i class="fas fa-users"></i> Listado de Alumnos</h2>
+                <p>Lista de todos los alumnos a tu cargo.</p>
+            </section>
+
+            <section id="progresos" class="module-container">
+                <h2><i class="fas fa-tasks"></i> Progresos Individuales</h2>
+                <p>Seguimiento del avance de cada alumno en los diferentes temas.</p>
+            </section>
+
+            <section id="asimilacion" class="module-container">
+                <h2><i class="fas fa-lightbulb"></i> Nivel de Asimilación</h2>
+                <p>Información sobre la comprensión de los temas y alertas para posibles necesidades de tutoría.</p>
+            </section>
+
+            <section id="atencion" class="module-container">
+                <h2><i class="fas fa-exclamation-triangle"></i> Alumnos con Necesidades de Atención</h2>
+                <p>Listado de alumnos que necesitan apoyo adicional del auxiliar.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.main-nav a');
+            const contentSections = document.querySelectorAll('.content > section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const targetSectionId = this.getAttribute('href').substring(1);
+                    contentSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    const targetSection = document.getElementById(targetSectionId);
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    } else if (targetSectionId === 'estadisticas') {
+                        document.getElementById('estadisticas').style.display = 'block';
+                    }
+                });
+            });
+
+            // Mostrar la sección de "Estadísticas" al cargar la página
+            const initialSection = document.getElementById('estadisticas');
+            if (initialSection) {
+                initialSection.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

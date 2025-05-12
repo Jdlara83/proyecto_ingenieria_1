@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención - Panel del Profesor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-icon {
+            color: #f3f3ee;
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .user-details h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+        }
+
+        .logout-btn {
+            background: none;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .main-nav {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .main-nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .main-nav li a:hover,
+        .main-nav li a.active {
+            background-color: #0056b3;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .module-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .module-container h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .module-container h2 i {
+            margin-right: 8px;
+        }
+
+        .module-container p.module-description {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos específicos para la sección de atención */
+        .atencion-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .atencion-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .atencion-info {
+            flex-grow: 1;
+        }
+
+        .atencion-info strong {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .atencion-actions button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .mark-attended {
+            background-color: #28a745; /* Verde para marcar como atendido */
+        }
+
+        .follow-up {
+            background-color: #007bff; /* Azul para seguimiento */
+        }
+
+        .attention-reason {
+            color: #555;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <div class="user-info">
+                <i class="fas fa-user-tie fa-2x avatar-icon"></i>
+                <div class="user-details">
+                    <h2>Profesor [Nombre del Profesor]</h2>
+                    <p>ID: [ID del Profesor]</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="window.location.href='inicio_sesion_profesor.html'">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </button>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="estadisticas.html"><i class="fas fa-chart-bar"></i> Estadísticas</a></li>
+                <li><a href="alumnos.html"><i class="fas fa-users"></i> Alumnos</a></li>
+                <li><a href="progresos.html"><i class="fas fa-tasks"></i> Progresos</a></li>
+                <li><a href="asimilacion.html"><i class="fas fa-lightbulb"></i> Asimilación</a></li>
+                <li><a href="atencion.html" class="active"><i class="fas fa-exclamation-triangle"></i> Atención</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div class="module-container">
+                <h2><i class="fas fa-exclamation-triangle"></i> Gestión de Atención al Alumno</h2>
+                <p class="module-description">Seguimiento de las solicitudes de apoyo del auxiliar y necesidades de atención especial.</p>
+                <ul class="atencion-list">
+                    <li>
+                        <div class="atencion-info">
+                            <strong>Mateo Vargas</strong>
+                            <p class="attention-reason">Solicitud de apoyo en las primeras lecciones de Matemáticas y Ciencias.</p>
+                            <p><strong>Notas:</strong> Mostrar ejemplos más visuales y dividir las tareas en pasos más pequeños.</p>
+                        </div>
+                        <div class="atencion-actions">
+                            <button class="mark-attended"><i class="fas fa-check"></i> Marcar como Atendido</button>
+                            <button class="follow-up"><i class="fas fa-history"></i> Seguimiento</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="atencion-info">
+                            <strong>Carlos López</strong>
+                            <p class="attention-reason">Necesita repaso en los conceptos básicos de Lenguaje.</p>
+                            <p><strong>Notas:</strong> Asignar ejercicios de refuerzo y revisar su comprensión oral.</p>
+                        </div>
+                        <div class="atencion-actions">
+                            <button class="mark-attended"><i class="fas fa-check"></i> Marcar como Atendido</button>
+                            <button class="follow-up"><i class="fas fa-history"></i> Seguimiento</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="atencion-info">
+                            <strong>[Otro Alumno]</strong>
+                            <p class="attention-reason">[Razón de la solicitud de atención].</p>
+                            <p><strong>Notas:</strong> [Notas adicionales del profesor o auxiliar].</p>
+                        </div>
+                        <div class="atencion-actions">
+                            <button class="mark-attended"><i class="fas fa-check"></i> Marcar como Atendido</button>
+                            <button class="follow-up"><i class="fas fa-history"></i> Seguimiento</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="atencion-info">
+                            <strong>Sofía Gómez</strong>
+                            <p class="attention-reason">Se sugirió apoyo auxiliar para reforzar la comprensión lectora.</p>
+                            <p><strong>Notas:</strong> Programar sesiones de lectura guiada.</p>
+                        </div>
+                        <div class="atencion-actions">
+                            <button class="mark-attended"><i class="fas fa-check"></i> Marcar como Atendido</button>
+                            <button class="follow-up"><i class="fas fa-history"></i> Seguimiento</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

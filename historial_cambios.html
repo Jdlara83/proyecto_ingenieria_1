@@ -1,0 +1,122 @@
+<section id="historial-cambios" class="module-container" style="display: none;">
+    <h2><i class="fas fa-history"></i> Historial de Cambios de la Plataforma</h2>
+    <p>Registro de las modificaciones realizadas en el sistema, incluyendo la fecha, el usuario responsable y la descripción del cambio.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha y Hora</th>
+                <th>Usuario</th>
+                <th>Tipo de Cambio</th>
+                <th>Descripción del Cambio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2025-05-07 10:30 AM</td>
+                <td>Administrador 1</td>
+                <td>Creación de Usuario</td>
+                <td>Se creó el usuario Profesor 'Laura Pérez'.</td>
+            </tr>
+            <tr>
+                <td>2025-05-06 03:15 PM</td>
+                <td>Administrador 2</td>
+                <td>Actualización de Contenido</td>
+                <td>Se modificó la lección 'Introducción a las Fracciones' en Matemáticas.</td>
+            </tr>
+            <tr>
+                <td>2025-05-05 11:00 AM</td>
+                <td>Administrador 1</td>
+                <td>Eliminación de Usuario</td>
+                <td>Se eliminó el usuario Padre 'Carlos Ruiz' (por solicitud).</td>
+            </tr>
+            <tr>
+                <td>2025-05-04 09:45 AM</td>
+                <td>Sistema</td>
+                <td>Actualización de Plataforma</td>
+                <td>Se aplicó un parche de seguridad para la autenticación de usuarios.</td>
+            </tr>
+            <tr>
+                <td>[Fecha y Hora]</td>
+                <td>[Usuario]</td>
+                <td>[Tipo de Cambio]</td>
+                <td>[Descripción del Cambio]</td>
+            </tr>
+            </tbody>
+    </table>
+
+    <style>
+        /* Estilos específicos para la tabla del historial de cambios */
+        #historial-cambios table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+        }
+
+        #historial-cambios th, #historial-cambios td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #historial-cambios th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        #historial-cambios tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('.main-nav a');
+        const contentSections = document.querySelectorAll('.content > section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                this.classList.add('active');
+
+                const targetSectionId = this.getAttribute('href').substring(1);
+                contentSections.forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                const targetSection = document.getElementById(targetSectionId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+
+                // Mostrar la sección de "Gestión de Usuarios" al cargar la página
+                if (window.location.hash === '#usuarios' || window.location.hash === '') {
+                    document.getElementById('usuarios').style.display = 'block';
+                    document.querySelector('.main-nav a[href="#usuarios"]').classList.add('active');
+                }
+            });
+        });
+
+        // Ocultar todas las secciones excepto la activa al cargar la página
+        contentSections.forEach(section => {
+            if (window.location.hash && `#${section.id}` === window.location.hash) {
+                section.style.display = 'block';
+            } else if (!window.location.hash && section.id === 'usuarios') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+
+        });
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === window.location.hash || (!window.location.hash && link.getAttribute('href') === '#usuarios')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    });
+</script>

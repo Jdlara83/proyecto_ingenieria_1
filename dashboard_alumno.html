@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¡Mi Panel de Aventuras!</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente divertida */
+            background-color: #e0f7fa; /* Fondo suave y alegre */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .dashboard-container {
+            max-width: 1000px; /* Un poco menos ancho para un diseño más centrado */
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 15px; /* Bordes más redondeados */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #81d4fa; /* Azul más claro y amigable */
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-icon {
+            color: #f3f3ee; /* Un color azul similar al tema */
+            font-size: 3em; /* Icono de usuario más grande */
+            margin-right: 15px; /* Espacio a la derecha del icono */
+        }
+
+        .user-details h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em; /* Nombre más grande */
+        }
+
+        .user-details p {
+            margin: 0;
+            font-size: 1em;
+            color: #ddd;
+        }
+
+        .logout-btn {
+            background: none;
+            color: white;
+            border: 2px solid white; /* Borde más grueso */
+            padding: 10px 20px; /* Botón más grande */
+            border-radius: 8px; /* Bordes más redondeados */
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .main-nav {
+            background-color: #29b6f6; /* Azul más brillante para la navegación */
+            color: white;
+            padding: 15px 0;
+            border-bottom: 5px solid #00b0ff; /* Borde inferior más marcado */
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .main-nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px; /* Botones de navegación más grandes */
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .main-nav li a:hover,
+        .main-nav li a.active {
+            background-color: #00b0ff;
+        }
+
+        .content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .courses-overview,
+        .general-progress,
+        .achievements {
+            background-color: #e1f5fe; /* Fondo suave para el contenido */
+            padding: 20px;
+            border-radius: 10px; /* Bordes más redondeados */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .courses-overview h2,
+        .general-progress h2,
+        .achievements h2 {
+            border-bottom: 3px dotted #29b6f6; /* Línea punteada amigable */
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #29b6f6; /* Títulos más coloridos */
+            font-size: 1.5em;
+        }
+
+        .course-card {
+            background-color: #f0f8ff; /* Fondo muy claro para las tarjetas */
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 8px solid #29b6f6; /* Borde izquierdo más grueso y colorido */
+        }
+
+        .course-info h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.3em;
+            color: #333;
+        }
+
+        .course-info p {
+            margin-bottom: 0;
+            font-size: 1em;
+            color: #666;
+        }
+
+        .progress-container {
+            background-color: #b3e5fc; /* Fondo claro para la barra */
+            border-radius: 8px;
+            height: 30px; /* Barra más alta */
+            width: 200px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background-color: #4caf50; /* Verde alegre para el progreso */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1em;
+            border-radius: 8px;
+            border-radius: 8px;
+        }
+
+        .next-class-btn {
+            background-color: #ffb74d; /* Naranja divertido */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-class-btn:hover {
+            background-color: #f57c00;
+        }
+
+        .general-progress {
+            text-align: center;
+        }
+
+        .progress-circle-container {
+            position: relative;
+            width: 180px; /* Círculo de progreso más grande */
+            height: 180px;
+            margin: 20px auto;
+        }
+
+        .progress-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 var(--progress), #b3e5fc 0); /* Colores más alegres */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5em; /* Número más grande */
+            color: #4caf50;
+        }
+
+        .progress-circle::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            color: #333;
+        }
+
+        .progress-value {
+            font-weight: bold;
+        }
+
+        .progress-circle-container p {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .achievements .medal-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap; /* Para que se adapten a pantallas pequeñas */
+        }
+
+        .achievements .medal {
+            text-align: center;
+            margin-bottom: 20px; /* Espacio entre medallas en pantallas pequeñas */
+        }
+
+        .achievements .medal i {
+            font-size: 3.5em; /* Medallas más grandes */
+        }
+
+        .achievements .medal i.gold {
+            color: gold;
+        }
+
+        .achievements .medal i.silver {
+            color: silver;
+        }
+
+        .achievements .medal i.bronze {
+            color: #cd7f32;
+        }
+
+        .achievements .medal p {
+            margin-top: 5px;
+            font-size: 1em;
+            color: #777;
+        }
+
+        .general-progress,
+        .achievements,
+        #horario,
+        #mensajes {
+            display: none; /* Ocultar al inicio */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <div class="user-info">
+                <i class="fas fa-user-graduate fa-3x avatar-icon"></i>
+                <div class="user-details">
+                    <h2>¡Hola, [Nombre del Alumno]!</h2>
+                    <p>¡Listo para aprender!</p>
+                </div>
+            </div>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> ¡Adiós!
+            </button>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li>
+                    <a href="#mis-cursos" class="active"
+                        ><i class="fas fa-book-open"></i> Mis Clases</a
+                    >
+                </li>
+                <li>
+                    <a href="#avance-general"
+                        ><i class="fas fa-chart-line"></i> Mi Avance</a
+                    >
+                </li>
+                <li>
+                    <a href="#medallas"><i class="fas fa-trophy"></i> Mis Logros</a>
+                </li>
+                <li>
+                    <a href="#horario"><i class="fas fa-calendar-alt"></i> Horario</a>
+                </li>
+                <li>
+                    <a href="#mensajes"><i class="fas fa-envelope"></i> Mensajes</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="mis-cursos" class="courses-overview">
+                <h2>¡Mis Clases Geniales!</h2>
+                <div class="course-card">
+                    <div class="course-info">
+                        <h3>Matemáticas ¡Divertidas!</h3>
+                        <p>Con el Profesor Juan</p>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 50%">
+                            <span>¡Mitad superada!</span>
+                        </div>
+                    </div>
+                    <button class="next-class-btn">
+                        <i class="fas fa-arrow-right"></i> ¡Siguiente Lección!
+                    </button>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-info">
+                        <h3>Ciencias ¡Asombrosas!</h3>
+                        <p>Con la Profesora Ana</p>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 46%">
+                            <span>¡Casi a la mitad!</span>
+                        </div>
+                    </div>
+                    <button class="next-class-btn">
+                        <i class="fas fa-arrow-right"></i> ¡Siguiente Lección!
+                    </button>
+                </div>
+            </section>
+
+            <section id="avance-general" class="general-progress">
+                <h2>¡Cómo voy en general!</h2>
+                <div class="progress-circle-container">
+                    <div class="progress-circle" data-progress="78">
+                        <div class="inner-circle">
+                            <span class="progress-value">¡Bien! 78%</span>
+                        </div>
+                    </div>
+                    <p>¡Mi progreso total!</p>
+                </div>
+            </section>
+
+            <section id="medallas" class="achievements">
+                <h2>¡Mis Premios Geniales!</h2>
+                <div class="medal-container">
+                    <div class="medal">
+                        <i class="fas fa-certificate fa-3x gold"></i>
+                        <p>¡Súper Estudioso!</p>
+                    </div>
+                    <div class="medal">
+                        <i class="fas fa-certificate fa-3x silver"></i>
+                        <p>¡Buen Trabajo!</p>
+                    </div>
+                    <div class="medal">
+                        <i class="fas fa-certificate fa-3x bronze"></i>
+                        <p>¡Sigue Aprendiendo!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="horario">
+                <h2>Mi Horario de Clases</h2>
+                <p>¡Aquí podrás ver cuándo tenemos cada clase!</p>
+                </section>
+
+            <section id="mensajes">
+                <h2>Mis Mensajes Importantes</h2>
+                <p>¡Aquí leerás los mensajes de tus profesores!</p>
+                </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const progressCircles = document.querySelectorAll(".progress-circle");
+
+            progressCircles.forEach((circle) => {
+                const progress = circle.dataset.progress;
+                circle.style.setProperty("--progress", `${progress}%`);
+                setTimeout(() => {
+                    circle.classList.add("animate");
+                }, 100);
+            });
+
+            const logoutButton = document.querySelector(".logout-btn");
+            if (logoutButton) {
+                logoutButton.addEventListener("click", () => {
+                    alert("¡Hasta la próxima aventura de aprendizaje!");
+                    window.location.href = "index.html";
+                });
+            }
+
+            const navLinks = document.querySelectorAll(".main-nav a");
+            const contentSections = document.querySelectorAll(".content > section");
+
+            navLinks.forEach((link) => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    navLinks.forEach((navLink) => navLink.classList.remove("active"));
+                    this.classList.add("active");
+
+                    const targetSectionId = this.getAttribute("href").substring(1);
+                    contentSections.forEach((section) => {
+                        section.style.display = "none";
+                    });
+
+                    const targetSection = document.getElementById(targetSectionId);
+                    if (targetSection) {
+                        targetSection.style.display = "block";
+                    } else if (targetSectionId === "mis-cursos") {
+                        document.getElementById("mis-cursos").style.display = "block";
+                    } else if (targetSectionId === "avance-general") {
+                        document.getElementById("avance-general").style.display = "block";
+                    } else if (targetSectionId === "medallas") {
+                        document.getElementById("medallas").style.display = "block";
+                    }
+                });
+            });
+
+            // Mostrar la sección de "Mis Clases" al cargar la página
+            const initialSection = document.getElementById("mis-cursos");
+            if (initialSection) {
+                initialSection.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

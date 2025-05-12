@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡A jugar a aprender! - Inicio de Sesión Niño</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #fce4ec;
+            /* Rosa suave y divertido */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 350px;
+        }
+
+        h2 {
+            color: #e91e63;
+            /* Rosa más intenso */
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .child-icon {
+            font-size: 4em;
+            color: #ffab91;
+            /* Naranja melocotón */
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #795548;
+            /* Marrón suave */
+            font-size: 1.1em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffccbc;
+            /* Borde naranja claro */
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #ff8a65;
+            /* Naranja más brillante */
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f4511e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <i class="fas fa-child fa-4x child-icon"></i>
+        <h2>¡Hola, Pequeño Explorador!</h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña Secreta:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">¡Entrar al Juego!</button>
+        </form>
+    </div>
+</body>
+
+</html>
