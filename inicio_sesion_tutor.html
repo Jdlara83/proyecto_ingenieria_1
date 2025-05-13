@@ -171,36 +171,92 @@
         </div>
     </div>
 
+    <!-- modal contacts -->
+<div id="contact-tutor-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-button" data-modal-id="contact-tutor-modal">&times;</span>
+            <h3>Contactar al Tutor</h3>
+        </div>
+        <div class="modal-body">
+            <p>Utilice el siguiente formulario para enviar un mensaje al tutor.</p>
+            <form id="contact-tutor-form">
+                <div class="form-group">
+                    <label for="tutor-subject">Asunto:</label>
+                    <input type="text" id="tutor-subject" name="tutor-subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="tutor-message">Mensaje:</label>
+                    <textarea id="tutor-message" name="tutor-message" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="contact-auxiliar-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-button" data-modal-id="contact-auxiliar-modal">&times;</span>
+            <h3>Contactar al Auxiliar</h3>
+        </div>
+        <div class="modal-body">
+            <p>Utilice el siguiente formulario para enviar un mensaje al auxiliar.</p>
+            <form id="contact-auxiliar-form">
+                <div class="form-group">
+                    <label for="auxiliar-subject">Asunto:</label>
+                    <input type="text" id="auxiliar-subject" name="auxiliar-subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="auxiliar-message">Mensaje:</label>
+                    <textarea id="auxiliar-message" name="auxiliar-message" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+</div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const loginFormAdulto = document.getElementById('login-form-adulto');
-            const infoModal = document.getElementById('infoModal');
-            const closeModalButton = document.querySelector('.close-button');
-            const modalMessage = document.getElementById('modalMessage');
-
-            loginFormAdulto.addEventListener('submit', function (event) {
-                event.preventDefault();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-
-                if (username === 'padre1' && password === 'clavepadre') {
-                    window.location.href = 'dashboard_tutor.html'; // Redirigir al panel del padre/tutor
-                } else {
-                    modalMessage.textContent = 'Credenciales incorrectas. Por favor, verifique e intente de nuevo. Si aún no tiene usuario, solicite al administrador del sistema su creación.';
-                    infoModal.style.display = "block";
-                }
+            const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+            const closeButtons = document.querySelectorAll('.modal .close-button');
+            const modals = document.querySelectorAll('.modal');
+            const contactTutorBtn = document.querySelector('.contact-buttons button:nth-child(1)'); // Selector para el botón "Contactar al Tutor"
+            const contactAuxiliarBtn = document.querySelector('.contact-buttons button:nth-child(2)'); // Selector para el botón "Contactar al Auxiliar"
+            const contactTutorModal = document.getElementById('contact-tutor-modal');
+            const contactAuxiliarModal = document.getElementById('contact-auxiliar-modal');
+        
+            // Event listeners para abrir los modales de contacto
+            if (contactTutorBtn) {
+                contactTutorBtn.addEventListener('click', () => {
+                    contactTutorModal.style.display = 'block';
+                });
+            }
+        
+            if (contactAuxiliarBtn) {
+                contactAuxiliarBtn.addEventListener('click', () => {
+                    contactAuxiliarModal.style.display = 'block';
+                });
+            }
+        
+            // Modificar el event listener para cerrar los modales para que sea más dinámico
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.dataset.modalId;
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                });
             });
-
-            // Cerrar el modal haciendo clic en la 'x'
-            closeModalButton.addEventListener('click', function () {
-                infoModal.style.display = "none";
-            });
-
-            // Cerrar el modal haciendo clic fuera del contenido
-            window.addEventListener('click', function (event) {
-                if (event.target == infoModal) {
-                    infoModal.style.display = "none";
-                }
+        
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                });
             });
         });
     </script>
