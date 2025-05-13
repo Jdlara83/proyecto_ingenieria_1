@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Parentesco</title>
+    <title>dashboard_tutor</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -31,7 +31,6 @@
 
       header {
         background-color: #198754;
-        /* Un color diferente para distinguirlo */
         color: white;
         padding: 20px;
         display: flex;
@@ -189,7 +188,6 @@
         border-radius: 5px;
         font-size: 0.9em;
         width: 0%;
-        /* Se actualizará dinámicamente */
       }
 
       .progress-details {
@@ -197,7 +195,7 @@
         font-size: 0.9em;
       }
 
-      /* Estilos base del modal (sin cambios importantes) */
+      /* Estilos base del modal*/
       .modal {
         display: none;
         position: fixed;
@@ -208,7 +206,6 @@
         height: 100%;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
-        /* Fondo un poco más oscuro */
       }
 
       .modal-content {
@@ -240,9 +237,7 @@
         margin: 0;
         color: #333;
         font-size: 1.25rem;
-        /* Tamaño de fuente más estándar */
         font-weight: 500;
-        /* Ligeramente más grueso */
       }
 
       /* Estilos para el botón de cerrar */
@@ -601,14 +596,13 @@
         });
 
         // Simulación del botón "Salir"
-        const logoutButton = document.getElementById("logout-btn"); // Selecciona el botón por su ID
+        const logoutButton = document.getElementById("logout-btn");
 
         if (logoutButton) {
           logoutButton.addEventListener("click", () => {
-            // Simplemente redirigimos a la página index.html
+            // redirigimos a la página index.html
             window.location.href = "index.html";
-            // Si quieres realizar alguna otra acción antes de salir (por ejemplo,
-            // guardar el estado o mostrar un mensaje), puedes hacerlo aquí.
+            
           });
         }
 

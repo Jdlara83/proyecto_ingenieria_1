@@ -12,7 +12,6 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9fbe7;
-            /* Un tono amarillo muy suave */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,19 +27,16 @@
             text-align: center;
             width: 400px;
             position: relative;
-            /* Para posicionar el modal dentro */
         }
 
         h1 {
             color: #2e7d32;
-            /* Un verde más terroso */
             margin-bottom: 30px;
         }
 
         .user-icon {
             font-size: 3em;
             color: #7cb342;
-            /* Un verde más brillante */
             margin-bottom: 20px;
         }
 
@@ -95,31 +91,23 @@
         /* Estilos para el modal */
         .modal {
             display: none;
-            /* Hidden by default */
             position: fixed;
-            /* Stay in place */
             z-index: 1;
-            /* Sit on top */
             left: 0;
             top: 0;
             width: 100%;
-            /* Full width */
             height: 100%;
-            /* Full height */
             overflow: auto;
-            /* Enable scroll if needed */
             background-color: rgba(0, 0, 0, 0.4);
-            /* Black w/ opacity */
         }
 
         .modal-content {
             background-color: #fefefe;
             margin: 15% auto;
-            /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            /* Could be more or less, depending on screen size */
+
             border-radius: 8px;
             position: relative;
         }
@@ -159,8 +147,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">Iniciar Sesión</button>
-            <button type="button" onclick="window.location.href='index.html'" class="back-button">Volver a Selección de
-                Usuario</button>
+            <button type="button" onclick="window.location.href='index.html'" class="back-button">Volver a Selección de Usuario</button>
         </form>
 
         <div id="infoModal" class="modal">
