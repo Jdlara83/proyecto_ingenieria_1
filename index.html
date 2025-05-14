@@ -25,6 +25,7 @@
                 <option value="profesor">Profesor</option>
                 <option value="auxiliar">Auxiliar</option>
                 <option value="tutor">Tutor</option>
+                <option value="administrador">Administrador</option>
             </select>
         </div>
 
@@ -162,6 +163,8 @@
                 window.location.href = 'inicio_sesion_auxiliar.html';
             } else if (selectedUser === 'tutor') {
                 window.location.href = 'inicio_sesion_tutor.html';
+            } else if (selectedUser === 'administrador') {
+                window.location.href = 'inicio_sesion_administrador.html';
             }
         });
     });</script>
