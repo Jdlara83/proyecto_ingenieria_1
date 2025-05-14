@@ -1,15 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Administrador</title>
+    <title>Iniciar Sesión - Administrador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fbe7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 400px;
+            position: relative;
+        }
+
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        .user-icon {
+            font-size: 3em;
+            color: #7cb342;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2e7d32;
+            /* Verde terroso */
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            margin-top: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #545b62;
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-message {
+            margin-bottom: 15px;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Error 500</h1>
-    <h2>Internal Server Error</h2>
+    <div class="login-container">
+        <i class="fas fa-users fa-3x user-icon"></i>
+        <h1>Iniciar Sesión Administrador</h1>
+        <form id="login-form-adulto">
+            <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+            <button type="button" onclick="window.location.href='index.html'" class="back-button">Volver a Selección de
+                Usuario</button>
+        </form>
+
+        <div id="infoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <p class="modal-message" id="modalMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginFormAdulto = document.getElementById('login-form-adulto');
+            const infoModal = document.getElementById('infoModal');
+            const closeModalButton = document.querySelector('.close-button');
+            const modalMessage = document.getElementById('modalMessage');
+
+            loginFormAdulto.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === 'admin1' && password === 'claveadmin') {
+                    window.location.href = 'dashboard_administrador.html'; // Redirigir al panel del administrador
+                } else {
+                    modalMessage.textContent = 'Credenciales incorrectas. Por favor, verifique e intente de nuevo. Si aún no tiene usuario, solicite al administrador del sistema su creación.';
+                    infoModal.style.display = "block";
+                }
+            });
+
+            // Cerrar el modal haciendo clic en la 'x'
+            closeModalButton.addEventListener('click', function () {
+                infoModal.style.display = "none";
+            });
+
+            // Cerrar el modal haciendo clic fuera del contenido
+            window.addEventListener('click', function (event) {
+                if (event.target == infoModal) {
+                    infoModal.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
