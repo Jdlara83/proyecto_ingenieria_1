@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración del Sistema</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff; /* Un color suave para el fondo */
+            background-color: #f0f8ff;
             margin: 0;
             padding: 0;
             color: #333;
@@ -24,7 +27,8 @@
         }
 
         header {
-            background-color: #343a40; /* Gris oscuro para el header */
+            background-color: #343a40;
+            /* Gris oscuro para el header */
             color: white;
             padding: 20px;
             display: flex;
@@ -64,7 +68,8 @@
         }
 
         .main-nav {
-            background-color: #545b62; /* Otro tono de gris */
+            background-color: #545b62;
+            /* Otro tono de gris */
             color: white;
             padding: 15px 0;
         }
@@ -147,7 +152,8 @@
         }
 
         .platform-issues li button {
-            background-color: #dc3545; /* Rojo para solucionar */
+            background-color: #dc3545;
+            /* Rojo para solucionar */
             color: white;
             border: none;
             border-radius: 5px;
@@ -161,6 +167,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="admin-container">
         <header>
@@ -192,7 +199,12 @@
                     <button><i class="fas fa-trash-alt"></i> Eliminar Usuario</button>
                     <button><i class="fas fa-list"></i> Listar Usuarios</button>
                 </div>
+<<<<<<< HEAD:panel_administracion.html
                 <p>Operaciones de creación, lectura, actualización y eliminación (CRUD) de los diferentes usuarios del sistema (profesores, padres, alumnos).</p>
+=======
+                <p>Aquí podrá realizar operaciones de creación, lectura, actualización y eliminación (CRUD) de los
+                    diferentes usuarios del sistema (profesores, padres, alumnos).</p>
+>>>>>>> a5a9aa1be71830df66f74721c7d042e0d4ec34a8:dashboard_administrador.html
             </section>
 
             <section id="plataforma" class="module-container" style="display: none;">
@@ -210,7 +222,8 @@
                         <button><i class="fas fa-check-circle"></i> Solucionar</button>
                     </li>
                     <li>
-                        <strong>Padre/Tutor [Nombre]:</strong> Sugerencia para añadir más detalles al progreso en juegos.
+                        <strong>Padre/Tutor [Nombre]:</strong> Sugerencia para añadir más detalles al progreso en
+                        juegos.
                         <button><i class="fas fa-check-circle"></i> Solucionar</button>
                     </li>
                     <li>
@@ -218,7 +231,8 @@
                         <button><i class="fas fa-check-circle"></i> Solucionar</button>
                     </li>
                 </ul>
-                <p>En esta sección se gestionan las solicitudes de cambio en la plataforma y se da seguimiento a los inconvenientes reportados por los usuarios.</p>
+                <p>En esta sección se gestionan las solicitudes de cambio en la plataforma y se da seguimiento a los
+                    inconvenientes reportados por los usuarios.</p>
             </section>
 
             <section id="reportes" class="module-container" style="display: none;">
@@ -228,7 +242,8 @@
                     <button><i class="fas fa-file-excel"></i> Exportar Datos de Actividad</button>
                     <button><i class="fas fa-history"></i> Historial de Cambios</button>
                 </div>
-                <p>Esta sección permite generar reportes sobre la actividad de los usuarios, el estado de la plataforma y el historial de cambios realizados.</p>
+                <p>Esta sección permite generar reportes sobre la actividad de los usuarios, el estado de la plataforma
+                    y el historial de cambios realizados.</p>
             </section>
         </main>
     </div>
@@ -239,7 +254,7 @@
             const contentSections = document.querySelectorAll('.content > section');
 
             navLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
+                link.addEventListener('click', function (event) {
                     event.preventDefault();
                     navLinks.forEach(navLink => navLink.classList.remove('active'));
                     this.classList.add('active');
@@ -264,4 +279,5 @@
         });
     </script>
 </body>
+
 </html>

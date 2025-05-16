@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Parentesco</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,7 +27,8 @@
         }
 
         header {
-            background-color: #198754; /* Un color diferente para distinguirlo */
+            background-color: #198754;
+            /* Un color diferente para distinguirlo */
             color: white;
             padding: 20px;
             display: flex;
@@ -64,7 +68,8 @@
         }
 
         .main-nav {
-            background-color: #28a745; /* Otro color del tema */
+            background-color: #28a745;
+            /* Otro color del tema */
             color: white;
             padding: 15px 0;
         }
@@ -180,7 +185,8 @@
             line-height: 20px;
             border-radius: 5px;
             font-size: 0.9em;
-            width: 0%; /* Se actualizará dinámicamente */
+            width: 0%;
+            /* Se actualizará dinámicamente */
         }
 
         .progress-details {
@@ -189,6 +195,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="dashboard-container">
         <header>
@@ -215,7 +222,8 @@
             <section id="alertas" class="module-container">
                 <h2><i class="fas fa-bell"></i> Alertas</h2>
                 <div class="alert-box">
-                    <strong>Posible dificultad en Matemáticas:</strong> El profesor ha notado un bajo rendimiento reciente.
+                    <strong>Posible dificultad en Matemáticas:</strong> El profesor ha notado un bajo rendimiento
+                    reciente.
                     <button>Ver Detalles</button>
                 </div>
                 <div class="alert-box">
@@ -276,7 +284,7 @@
             const contentSections = document.querySelectorAll('.content > section');
 
             navLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
+                link.addEventListener('click', function (event) {
                     event.preventDefault();
                     navLinks.forEach(navLink => navLink.classList.remove('active'));
                     this.classList.add('active');
@@ -301,4 +309,5 @@
         });
     </script>
 </body>
+
 </html>

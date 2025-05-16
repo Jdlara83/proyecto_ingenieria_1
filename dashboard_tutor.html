@@ -1,727 +1,684 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dashboard_tutor</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
-        color: #333;
-      }
 
-      .dashboard-container {
-        max-width: 960px;
-        margin: 20px auto;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dashboard_tutor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
 
-      header {
-        background-color: #198754;
-        color: white;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    .dashboard-container {
+      max-width: 960px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
 
-      .parent-info {
-        display: flex;
-        align-items: center;
-      }
+    header {
+      background-color: #198754;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .parent-icon {
-        color: #f3f3ee;
-        font-size: 2em;
-        margin-right: 15px;
-      }
+    .parent-info {
+      display: flex;
+      align-items: center;
+    }
 
-      .parent-details h2 {
-        margin: 0 0 5px 0;
-        font-size: 1.3em;
-      }
+    .parent-icon {
+      color: #f3f3ee;
+      font-size: 2em;
+      margin-right: 15px;
+    }
 
-      .logout-btn {
-        background: none;
-        color: white;
-        border: 1px solid white;
-        padding: 8px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s ease;
-      }
+    .parent-details h2 {
+      margin: 0 0 5px 0;
+      font-size: 1.3em;
+    }
 
-      .logout-btn:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
+    .logout-btn {
+      background: none;
+      color: white;
+      border: 1px solid white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
 
-      .main-nav {
-        background-color: #28a745;
-        /* Otro color del tema */
-        color: white;
-        padding: 15px 0;
-      }
+    .logout-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-      .main-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: space-around;
-      }
+    .main-nav {
+      background-color: #28a745;
+      color: white;
+      padding: 15px 0;
+    }
 
-      .main-nav li a {
-        display: block;
-        color: white;
-        text-decoration: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-      }
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+    }
 
-      .main-nav li a:hover,
-      .main-nav li a.active {
-        background-color: #1e7e34;
-      }
+    .main-nav li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
 
-      .content {
-        padding: 20px;
-      }
+    .main-nav li a:hover,
+    .main-nav li a.active {
+      background-color: #1e7e34;
+    }
 
-      .module-container {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        margin-bottom: 20px;
-      }
+    .content {
+      padding: 20px;
+    }
 
-      .module-container h2 {
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-        color: #333;
-      }
+    .module-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+    }
 
-      .alert-box {
-        background-color: #ffeeba;
-        color: #85640a;
-        border: 1px solid #ffe082;
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    .module-container h2 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      color: #333;
+    }
 
-      .alert-box button {
-        background-color: #d4ac0d;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 8px 12px;
-        cursor: pointer;
-        font-size: 0.9em;
-      }
+    .alert-box {
+      background-color: #ffeeba;
+      color: #85640a;
+      border: 1px solid #ffe082;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .alert-box button:hover {
-        background-color: #b89208;
-      }
+    .alert-box button {
+      background-color: #d4ac0d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
 
-      .contact-button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 15px;
-        cursor: pointer;
-        font-size: 1em;
-        margin-top: 10px;
-      }
+    .alert-box button:hover {
+      background-color: #b89208;
+    }
 
-      .contact-button:hover {
-        background-color: #0056b3;
-      }
+    .contact-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 10px;
+    }
 
-      /* Estilos para la sección de progreso */
-      .progress-item {
-        margin-bottom: 20px;
-      }
+    .contact-button:hover {
+      background-color: #0056b3;
+    }
 
-      .progress-item strong {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #333;
-      }
+    .progress-item {
+      margin-bottom: 20px;
+    }
 
-      .progress-bar-container {
-        background-color: #e9ecef;
-        border-radius: 5px;
-        height: 20px;
-        width: 100%;
-        overflow: hidden;
-        margin-bottom: 5px;
-      }
+    .progress-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
 
-      .progress-bar {
-        background-color: #28a745;
-        height: 100%;
-        color: white;
-        text-align: center;
-        line-height: 20px;
-        border-radius: 5px;
-        font-size: 0.9em;
-        width: 0%;
-      }
+    .progress-bar-container {
+      background-color: #e9ecef;
+      border-radius: 5px;
+      height: 20px;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
 
-      .progress-details {
-        color: #777;
-        font-size: 0.9em;
-      }
+    .progress-bar {
+      background-color: #28a745;
+      height: 100%;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      width: 0%;
+    }
 
-      /* Estilos base del modal*/
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-      }
+    .progress-details {
+      color: #777;
+      font-size: 0.9em;
+    }
 
-      .modal-content {
-        background-color: #fff;
-        margin: 10% auto;
-        padding: 0;
-        border: 1px solid #ccc;
-        width: 80%;
-        max-width: 600px;
-        border-radius: 0.3rem;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        position: relative;
-      }
+    /* Estilos base del modal*/
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
-      /* Estilos para la cabecera del modal */
-      .modal-header {
-        padding: 1rem 1.5rem;
-        background-color: #198754;
-        color: #007bff;
-        border-bottom: 1px solid #dee2e6;
-        border-top-left-radius: 0.3rem;
-        border-top-right-radius: 0.3rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 0;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 0.3rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
 
-      .modal-header h3 {
-        margin: 0;
-        color: #333;
-        font-size: 1.25rem;
-        font-weight: 500;
-      }
+    .modal-header {
+      padding: 1rem 1.5rem;
+      background-color: #198754;
+      color: #007bff;
+      border-bottom: 1px solid #dee2e6;
+      border-top-left-radius: 0.3rem;
+      border-top-right-radius: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      /* Estilos para el botón de cerrar */
-      .close-button {
-        color: #aaa;
-        font-size: 1.5rem;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-        background: none;
-        padding: 0;
-        appearance: none;
-        /* Remover estilos nativos del botón */
-      }
+    .modal-header h3 {
+      margin: 0;
+      color: #333;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
 
-      .close-button:hover,
-      .close-button:focus {
-        color: #000;
-        text-decoration: none;
-        opacity: 0.75;
-      }
+    .close-button {
+      color: #aaa;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      appearance: none;
+    }
 
-      /* Estilos para el cuerpo del modal */
-      .modal-body {
-        padding: 1.5rem;
-      }
+    .close-button:hover,
+    .close-button:focus {
+      color: #000;
+      text-decoration: none;
+      opacity: 0.75;
+    }
 
-      .modal-body p {
-        margin-bottom: 1rem;
-        color: #555;
-        line-height: 1.5;
-        /* Mejor legibilidad */
-      }
+    .modal-body {
+      padding: 1.5rem;
+    }
 
-      .modal-body strong {
-        font-weight: bold;
-        color: #333;
-      }
+    .modal-body p {
+      margin-bottom: 1rem;
+      color: #555;
+      line-height: 1.5;
+    }
 
-      /* Estilos para los formularios dentro del modal de contacto */
-      .modal-body .form-group {
-        margin-bottom: 1rem;
-      }
+    .modal-body strong {
+      font-weight: bold;
+      color: #333;
+    }
 
-      .modal-body .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-        color: #333;
-      }
+    .modal-body .form-group {
+      margin-bottom: 1rem;
+    }
 
-      .modal-body .form-group input[type="text"],
-      .modal-body .form-group textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 0.25rem;
-        box-sizing: border-box;
-        font-size: 1rem;
-      }
+    .modal-body .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #333;
+    }
 
-      .modal-body .form-group textarea {
-        resize: vertical;
-      }
+    .modal-body .form-group input[type="text"],
+    .modal-body .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
 
-      .modal-body button[type="submit"] {
-        background-color: #007bff;
-        color: #fff;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        font-size: 1rem;
-      }
+    .modal-body .form-group textarea {
+      resize: vertical;
+    }
 
-      .modal-body button[type="submit"]:hover {
-        background-color: #0056b3;
-      }
-    </style>
-  </head>
+    .modal-body button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
 
-  <body>
-    <div class="dashboard-container">
-      <header>
-        <div class="parent-info">
-          <i class="fas fa-user fa-2x parent-icon"></i>
-          <div class="parent-details">
-            <h2>Padre/Tutor de [Nombre del Niño]</h2>
-          </div>
+    .modal-body button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <header>
+      <div class="parent-info">
+        <i class="fas fa-user fa-2x parent-icon"></i>
+        <div class="parent-details">
+          <h2>Padre/Tutor de [Nombre del Niño]</h2>
         </div>
-        <button
-          class="logout-btn" id="logout-btn"
-          onclick="window.location.href='inicio_sesion_ninos.html'"
-        >
-          <i class="fas fa-sign-out-alt"></i> Salir
-        </button>
-      </header>
+      </div>
+      <button class="logout-btn" id="logout-btn" onclick="window.location.href='inicio_sesion_ninos.html'">
+        <i class="fas fa-sign-out-alt"></i> Salir
+      </button>
+    </header>
 
-      <nav class="main-nav">
-        <ul>
-          <li>
-            <a href="#alertas" class="active"
-              ><i class="fas fa-bell"></i> Alertas</a
-            >
-          </li>
-          <li>
-            <a href="#progreso"><i class="fas fa-chart-line"></i> Progreso</a>
-          </li>
-          <li>
-            <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-          </li>
-        </ul>
-      </nav>
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a href="#alertas" class="active"><i class="fas fa-bell"></i> Alertas</a>
+        </li>
+        <li>
+          <a href="#progreso"><i class="fas fa-chart-line"></i> Progreso</a>
+        </li>
+        <li>
+          <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+        </li>
+      </ul>
+    </nav>
 
-      <main class="content">
-        <section id="alertas" class="module-container">
-          <h2><i class="fas fa-bell"></i> Alertas</h2>
-          <div class="alert-box">
-            <strong>Posible dificultad en Matemáticas:</strong> El profesor ha
-            notado un bajo rendimiento reciente.
-            <button class="view-details-btn" data-alert-id="1">
-              Ver Detalles
-            </button>
-            <div id="alert-details-1" class="modal">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="close-button">&times;</span>
-                  <h3>Detalles de la Alerta</h3>
-                </div>
-                <div class="modal-body">
-                  <p><strong>Asignatura:</strong> Matemáticas</p>
-                  <p>
-                    <strong>Descripción:</strong> Se ha observado una
-                    disminución en las calificaciones de los últimos tres
-                    exámenes y una menor participación en clase. Se recomienda
-                    revisar los temas de fracciones y ecuaciones.
-                  </p>
-                  <p><strong>Fecha de Notificación:</strong> 2025-05-12</p>
-                  <p>
-                    <strong>Acciones Sugeridas:</strong> Revisar el material de
-                    clase, ofrecer apoyo adicional y comunicarse con el profesor
-                    si es necesario.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div id="alert-details-2" class="modal">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="close-button">&times;</span>
-                  <h3>Detalles de la Tarea Pendiente</h3>
-                </div>
-                <div class="modal-body">
-                  <p><strong>Asignatura:</strong> Ciencias Naturales</p>
-                  <p>
-                    <strong>Tarea:</strong> Informe sobre el ciclo del agua.
-                  </p>
-                  <p><strong>Fecha de Vencimiento:</strong> 2025-05-10</p>
-                  <p><strong>Estado:</strong> Sin entregar</p>
-                  <p>
-                    <strong>Acciones Sugeridas:</strong> Enviar la tarea lo
-                    antes posible. Contactar al profesor si hay algún problema.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="alert-box">
-            <strong>Tarea sin entregar:</strong> La última tarea de Ciencias no
-            ha sido enviada.
-            <button class="view-details-btn" data-alert-id="2">
-              Ver Detalles
-            </button>
-            <div id="alert-details-2" class="modal">
-              <div class="modal-content">
+    <main class="content">
+      <section id="alertas" class="module-container">
+        <h2><i class="fas fa-bell"></i> Alertas</h2>
+        <div class="alert-box">
+          <strong>Posible dificultad en Matemáticas:</strong> El profesor ha
+          notado un bajo rendimiento reciente.
+          <button class="view-details-btn" data-alert-id="1">
+            Ver Detalles
+          </button>
+          <div id="alert-details-1" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
                 <span class="close-button">&times;</span>
-                <h3>Detalles de la Tarea Pendiente</h3>
-                <p><strong>Asignatura:</strong> Ciencias Naturales</p>
-                <p><strong>Tarea:</strong> Informe sobre el ciclo del agua.</p>
-                <p><strong>Fecha de Vencimiento:</strong> 2025-05-10</p>
-                <p><strong>Estado:</strong> Sin entregar</p>
+                <h3>Detalles de la Alerta</h3>
+              </div>
+              <div class="modal-body">
+                <p><strong>Asignatura:</strong> Matemáticas</p>
                 <p>
-                  <strong>Acciones Sugeridas:</strong> Enviar la tarea lo antes
-                  posible. Contactar al profesor si hay algún problema.
+                  <strong>Descripción:</strong> Se ha observado una
+                  disminución en las calificaciones de los últimos tres
+                  exámenes y una menor participación en clase. Se recomienda
+                  revisar los temas de fracciones y ecuaciones.
+                </p>
+                <p><strong>Fecha de Notificación:</strong> 2025-05-12</p>
+                <p>
+                  <strong>Acciones Sugeridas:</strong> Revisar el material de
+                  clase, ofrecer apoyo adicional y comunicarse con el profesor
+                  si es necesario.
                 </p>
               </div>
             </div>
           </div>
-        </section>
 
-        <section id="progreso" class="module-container" style="display: none">
-          <h2>
-            <i class="fas fa-chart-line"></i> Progreso de [Nombre del Niño]
-          </h2>
-          <p>
-            Visualización del progreso en las diferentes áreas de aprendizaje.
-          </p>
-
-          <div class="progress-item">
-            <strong>Matemáticas:</strong>
-            <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 75%">75%</div>
+          <div id="alert-details-2" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close-button">&times;</span>
+                <h3>Detalles de la Tarea Pendiente</h3>
+              </div>
+              <div class="modal-body">
+                <p><strong>Asignatura:</strong> Ciencias Naturales</p>
+                <p>
+                  <strong>Tarea:</strong> Informe sobre el ciclo del agua.
+                </p>
+                <p><strong>Fecha de Vencimiento:</strong> 2025-05-10</p>
+                <p><strong>Estado:</strong> Sin entregar</p>
+                <p>
+                  <strong>Acciones Sugeridas:</strong> Enviar la tarea lo
+                  antes posible. Contactar al profesor si hay algún problema.
+                </p>
+              </div>
             </div>
-            <p class="progress-details">Completadas 6 de 8 unidades.</p>
           </div>
-
-          <div class="progress-item">
-            <strong>Ciencias:</strong>
-            <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 90%">90%</div>
-            </div>
-            <p class="progress-details">Completadas 9 de 10 lecciones.</p>
-          </div>
-
-          <div class="progress-item">
-            <strong>Lenguaje:</strong>
-            <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 60%">60%</div>
-            </div>
-            <p class="progress-details">Completados 5 de 7 módulos.</p>
-          </div>
-
-          <div class="progress-item">
-            <strong>[Otra Materia]:</strong>
-            <div class="progress-bar-container">
-              <div class="progress-bar" style="width: 80%">80%</div>
-            </div>
-            <p class="progress-details">
-              Información adicional sobre el progreso.
-            </p>
-          </div>
-        </section>
-
-        <section id="contacto" class="module-container" style="display: none">
-          <h2><i class="fas fa-envelope"></i> Contacto</h2>
-          <p>
-            Aquí puede contactar al tutor o al auxiliar si tiene alguna pregunta
-            o inquietud.
-          </p>
-          <div class="contact-buttons">
-            <button class="contact-button">
-              <i class="fas fa-chalkboard-teacher"></i> Contactar al Tutor
-            </button>
-            <button class="contact-button">
-              <i class="fas fa-hands-helping"></i> Contactar al Auxiliar
-            </button>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <!-- modal contacto -->
-
-    <div id="contact-tutor-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close-button" data-modal-id="contact-tutor-modal"
-            >&times;</span
-          >
-          <h3>Contactar al Tutor</h3>
         </div>
-        <div class="modal-body">
-          <p>
-            Utilice el siguiente formulario para enviar un mensaje al tutor.
-          </p>
-          <form id="contact-tutor-form">
-            <div class="form-group">
-              <label for="tutor-subject">Asunto:</label>
-              <input
-                type="text"
-                id="tutor-subject"
-                name="tutor-subject"
-                class="form-control"
-                required
-              />
+        <div class="alert-box">
+          <strong>Tarea sin entregar:</strong> La última tarea de Ciencias no
+          ha sido enviada.
+          <button class="view-details-btn" data-alert-id="2">
+            Ver Detalles
+          </button>
+          <div id="alert-details-2" class="modal">
+            <div class="modal-content">
+              <span class="close-button">&times;</span>
+              <h3>Detalles de la Tarea Pendiente</h3>
+              <p><strong>Asignatura:</strong> Ciencias Naturales</p>
+              <p><strong>Tarea:</strong> Informe sobre el ciclo del agua.</p>
+              <p><strong>Fecha de Vencimiento:</strong> 2025-05-10</p>
+              <p><strong>Estado:</strong> Sin entregar</p>
+              <p>
+                <strong>Acciones Sugeridas:</strong> Enviar la tarea lo antes
+                posible. Contactar al profesor si hay algún problema.
+              </p>
             </div>
-            <div class="form-group">
-              <label for="tutor-message">Mensaje:</label>
-              <textarea
-                id="tutor-message"
-                name="tutor-message"
-                class="form-control"
-                rows="5"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Enviar Mensaje
-            </button>
-          </form>
+          </div>
         </div>
+      </section>
+
+      <section id="progreso" class="module-container" style="display: none">
+        <h2>
+          <i class="fas fa-chart-line"></i> Progreso de [Nombre del Niño]
+        </h2>
+        <p>
+          Visualización del progreso en las diferentes áreas de aprendizaje.
+        </p>
+
+        <div class="progress-item">
+          <strong>Matemáticas:</strong>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 75%">75%</div>
+          </div>
+          <p class="progress-details">Completadas 6 de 8 unidades.</p>
+        </div>
+
+        <div class="progress-item">
+          <strong>Ciencias:</strong>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 90%">90%</div>
+          </div>
+          <p class="progress-details">Completadas 9 de 10 lecciones.</p>
+        </div>
+
+        <div class="progress-item">
+          <strong>Lenguaje:</strong>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 60%">60%</div>
+          </div>
+          <p class="progress-details">Completados 5 de 7 módulos.</p>
+        </div>
+
+        <div class="progress-item">
+          <strong>[Otra Materia]:</strong>
+          <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 80%">80%</div>
+          </div>
+          <p class="progress-details">
+            Información adicional sobre el progreso.
+          </p>
+        </div>
+      </section>
+
+      <section id="contacto" class="module-container" style="display: none">
+        <h2><i class="fas fa-envelope"></i> Contacto</h2>
+        <p>
+          Aquí puede contactar al tutor o al auxiliar si tiene alguna pregunta
+          o inquietud.
+        </p>
+        <div class="contact-buttons">
+          <button class="contact-button">
+            <i class="fas fa-chalkboard-teacher"></i> Contactar al Tutor
+          </button>
+          <button class="contact-button">
+            <i class="fas fa-hands-helping"></i> Contactar al Auxiliar
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- modal contacto -->
+
+  <div id="contact-tutor-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close-button" data-modal-id="contact-tutor-modal">&times;</span>
+        <h3>Contactar al Tutor</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          Utilice el siguiente formulario para enviar un mensaje al tutor.
+        </p>
+        <form id="contact-tutor-form">
+          <div class="form-group">
+            <label for="tutor-subject">Asunto:</label>
+            <input type="text" id="tutor-subject" name="tutor-subject" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="tutor-message">Mensaje:</label>
+            <textarea id="tutor-message" name="tutor-message" class="form-control" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Enviar Mensaje
+          </button>
+        </form>
       </div>
     </div>
+  </div>
 
-    <div id="contact-auxiliar-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close-button" data-modal-id="contact-auxiliar-modal"
-            >&times;</span
-          >
-          <h3>Contactar al Auxiliar</h3>
-        </div>
-        <div class="modal-body">
-          <!-- <p>Utilice el siguiente formulario para enviar un mensaje al auxiliar.</p> -->
-          <form id="contact-auxiliar-form">
-            <div class="form-group">
-              <label for="auxiliar-subject">Asunto:</label>
-              <input
-                type="text"
-                id="auxiliar-subject"
-                name="auxiliar-subject"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="auxiliar-message">Mensaje:</label>
-              <textarea
-                id="auxiliar-message"
-                name="auxiliar-message"
-                class="form-control"
-                rows="5"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Enviar Mensaje
-            </button>
-          </form>
-        </div>
+  <div id="contact-auxiliar-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close-button" data-modal-id="contact-auxiliar-modal">&times;</span>
+        <h3>Contactar al Auxiliar</h3>
+      </div>
+      <div class="modal-body">
+        <!-- <p>Utilice el siguiente formulario para enviar un mensaje al auxiliar.</p> -->
+        <form id="contact-auxiliar-form">
+          <div class="form-group">
+            <label for="auxiliar-subject">Asunto:</label>
+            <input type="text" id="auxiliar-subject" name="auxiliar-subject" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="auxiliar-message">Mensaje:</label>
+            <textarea id="auxiliar-message" name="auxiliar-message" class="form-control" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Enviar Mensaje
+          </button>
+        </form>
       </div>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // --- Navegación ---
-        const navLinks = document.querySelectorAll(".main-nav a");
-        const contentSections = document.querySelectorAll(".content > section");
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // --- Navegación ---
+      const navLinks = document.querySelectorAll(".main-nav a");
+      const contentSections = document.querySelectorAll(".content > section");
 
-        navLinks.forEach((link) => {
-          link.addEventListener("click", function (event) {
-            event.preventDefault();
-            navLinks.forEach((navLink) => navLink.classList.remove("active"));
-            this.classList.add("active");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          navLinks.forEach((navLink) => navLink.classList.remove("active"));
+          this.classList.add("active");
 
-            const targetSectionId = this.getAttribute("href").substring(1);
-            contentSections.forEach((section) => {
-              section.style.display = "none";
-            });
-
-            const targetSection = document.getElementById(targetSectionId);
-            if (targetSection) {
-              targetSection.style.display = "block";
-            }
+          const targetSectionId = this.getAttribute("href").substring(1);
+          contentSections.forEach((section) => {
+            section.style.display = "none";
           });
-        });
 
-        // Simulación del botón "Salir"
-        const logoutButton = document.getElementById("logout-btn");
-
-        if (logoutButton) {
-          logoutButton.addEventListener("click", () => {
-            // redirigimos a la página index.html
-            window.location.href = "index.html";
-            
-          });
-        }
-
-        // Mostrar la sección de "Alertas" al cargar la página
-        const initialSection = document.getElementById("alertas");
-        if (initialSection) {
-          initialSection.style.display = "block";
-        }
-
-        // --- Modales ---
-        const viewDetailsButtons =
-          document.querySelectorAll(".view-details-btn");
-        const closeButtons = document.querySelectorAll(".modal .close-button");
-        const modals = document.querySelectorAll(".modal");
-
-        // Modales de contacto
-        const contactTutorBtn = document.querySelector(
-          ".contact-buttons button:nth-child(1)"
-        );
-        const contactAuxiliarBtn = document.querySelector(
-          ".contact-buttons button:nth-child(2)"
-        );
-        const contactTutorModal = document.getElementById(
-          "contact-tutor-modal"
-        );
-        const contactAuxiliarModal = document.getElementById(
-          "contact-auxiliar-modal"
-        );
-
-        // Event listeners para abrir los modales de contacto
-        if (contactTutorBtn && contactTutorModal) {
-          contactTutorBtn.addEventListener("click", () => {
-            contactTutorModal.style.display = "block";
-          });
-        }
-
-        if (contactAuxiliarBtn && contactAuxiliarModal) {
-          contactAuxiliarBtn.addEventListener("click", () => {
-            contactAuxiliarModal.style.display = "block";
-          });
-        }
-        // Simulación de envío del formulario de contacto del tutor
-        const contactTutorForm = document.getElementById("contact-tutor-form");
-        if (contactTutorForm) {
-          contactTutorForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const modalBody = contactTutorForm.closest(".modal-body");
-            if (modalBody) {
-              contactTutorForm.style.display = "none"; // Ocultar el formulario
-              const successMessage = document.createElement("p");
-              successMessage.textContent =
-                "Mensaje enviado al tutor exitosamente.";
-              successMessage.classList.add("success-message");
-              modalBody.appendChild(successMessage);
-
-              // setTimeout(() => {
-              // successMessage.remove();
-              // contactTutorForm.style.display = "block"; // Mostrar el formulario de nuevo
-              // contactTutorForm.reset(); // Limpiar el formulario
-              //}, 3000); // Mostrar el mensaje por 3 segundos
-            }
-          });
-        }
-
-        // Simulación de envío del formulario de contacto del auxiliar
-        const contactAuxiliarForm = document.getElementById(
-          "contact-auxiliar-form"
-        );
-        if (contactAuxiliarForm) {
-          contactAuxiliarForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const modalBody = contactAuxiliarForm.closest(".modal-body");
-            if (modalBody) {
-              contactAuxiliarForm.style.display = "none"; // Ocultar el formulario
-              const successMessage = document.createElement("p");
-              successMessage.textContent =
-                "Mensaje enviado al auxiliar exitosamente.";
-              successMessage.classList.add("success-message"); // Opcional: clase para estilos
-              modalBody.appendChild(successMessage);
-
-              //setTimeout(() => {
-              // successMessage.remove();
-              // contactAuxiliarForm.style.display = "block"; // Mostrar el formulario de nuevo
-              // contactAuxiliarForm.reset(); // Limpiar el formulario
-              // }, 3000); // Mostrar el mensaje por 3 segundos
-            }
-          });
-        }
-
-        // Event listeners para abrir los modales de alertas
-        viewDetailsButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const alertId = this.dataset.alertId;
-            const modal = document.getElementById(`alert-details-${alertId}`);
-            if (modal) {
-              modal.style.display = "block";
-            }
-          });
-        });
-
-        // Event listener para cerrar todos los modales (clic en la 'x')
-        closeButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const modal = this.closest(".modal");
-            if (modal) {
-              modal.style.display = "none";
-            }
-          });
-        });
-
-        // Event listener para cerrar todos los modales (clic fuera)
-        window.addEventListener("click", function (event) {
-          modals.forEach((modal) => {
-            if (event.target == modal) {
-              modal.style.display = "none";
-            }
-          });
+          const targetSection = document.getElementById(targetSectionId);
+          if (targetSection) {
+            targetSection.style.display = "block";
+          }
         });
       });
-    </script>
-  </body>
+
+      // Simulación del botón "Salir"
+      const logoutButton = document.getElementById("logout-btn");
+
+      if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+          // redirigimos a la página index.html
+          window.location.href = "index.html";
+
+        });
+      }
+
+      // Mostrar la sección de "Alertas" al cargar la página
+      const initialSection = document.getElementById("alertas");
+      if (initialSection) {
+        initialSection.style.display = "block";
+      }
+
+      // --- Modales ---
+      const viewDetailsButtons =
+        document.querySelectorAll(".view-details-btn");
+      const closeButtons = document.querySelectorAll(".modal .close-button");
+      const modals = document.querySelectorAll(".modal");
+
+      // Modales de contacto
+      const contactTutorBtn = document.querySelector(
+        ".contact-buttons button:nth-child(1)"
+      );
+      const contactAuxiliarBtn = document.querySelector(
+        ".contact-buttons button:nth-child(2)"
+      );
+      const contactTutorModal = document.getElementById(
+        "contact-tutor-modal"
+      );
+      const contactAuxiliarModal = document.getElementById(
+        "contact-auxiliar-modal"
+      );
+
+      // Event listeners para abrir los modales de contacto
+      if (contactTutorBtn && contactTutorModal) {
+        contactTutorBtn.addEventListener("click", () => {
+          contactTutorModal.style.display = "block";
+        });
+      }
+
+      if (contactAuxiliarBtn && contactAuxiliarModal) {
+        contactAuxiliarBtn.addEventListener("click", () => {
+          contactAuxiliarModal.style.display = "block";
+        });
+      }
+      // Simulación de envío del formulario de contacto del tutor
+      const contactTutorForm = document.getElementById("contact-tutor-form");
+      if (contactTutorForm) {
+        contactTutorForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const modalBody = contactTutorForm.closest(".modal-body");
+          if (modalBody) {
+            contactTutorForm.style.display = "none"; // Ocultar el formulario
+            const successMessage = document.createElement("p");
+            successMessage.textContent =
+              "Mensaje enviado al tutor exitosamente.";
+            successMessage.classList.add("success-message");
+            modalBody.appendChild(successMessage);
+
+            // setTimeout(() => {
+            // successMessage.remove();
+            // contactTutorForm.style.display = "block"; // Mostrar el formulario de nuevo
+            // contactTutorForm.reset(); // Limpiar el formulario
+            //}, 3000); // Mostrar el mensaje por 3 segundos
+          }
+        });
+      }
+
+      // Simulación de envío del formulario de contacto del auxiliar
+      const contactAuxiliarForm = document.getElementById(
+        "contact-auxiliar-form"
+      );
+      if (contactAuxiliarForm) {
+        contactAuxiliarForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const modalBody = contactAuxiliarForm.closest(".modal-body");
+          if (modalBody) {
+            contactAuxiliarForm.style.display = "none"; // Ocultar el formulario
+            const successMessage = document.createElement("p");
+            successMessage.textContent =
+              "Mensaje enviado al auxiliar exitosamente.";
+            successMessage.classList.add("success-message"); // Opcional: clase para estilos
+            modalBody.appendChild(successMessage);
+
+            //setTimeout(() => {
+            // successMessage.remove();
+            // contactAuxiliarForm.style.display = "block"; // Mostrar el formulario de nuevo
+            // contactAuxiliarForm.reset(); // Limpiar el formulario
+            // }, 3000); // Mostrar el mensaje por 3 segundos
+          }
+        });
+      }
+
+      // Event listeners para abrir los modales de alertas
+      viewDetailsButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const alertId = this.dataset.alertId;
+          const modal = document.getElementById(`alert-details-${alertId}`);
+          if (modal) {
+            modal.style.display = "block";
+          }
+        });
+      });
+
+      // Event listener para cerrar todos los modales (clic en la 'x')
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const modal = this.closest(".modal");
+          if (modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+
+      // Event listener para cerrar todos los modales (clic fuera)
+      window.addEventListener("click", function (event) {
+        modals.forEach((modal) => {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
 </html>
