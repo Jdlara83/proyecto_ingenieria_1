@@ -28,7 +28,6 @@
 
         header {
             background-color: #343a40;
-            /* Gris oscuro para el header */
             color: white;
             padding: 20px;
             display: flex;
@@ -69,7 +68,6 @@
 
         .main-nav {
             background-color: #545b62;
-            /* Otro tono de gris */
             color: white;
             padding: 15px 0;
         }
@@ -125,6 +123,7 @@
             font-size: 1em;
             margin-right: 10px;
             margin-bottom: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .admin-actions button:hover {
@@ -153,7 +152,6 @@
 
         .platform-issues li button {
             background-color: #dc3545;
-            /* Rojo para solucionar */
             color: white;
             border: none;
             border-radius: 5px;
@@ -164,6 +162,341 @@
 
         .platform-issues li button:hover {
             background-color: #c82333;
+        }
+
+        /* Nuevo CSS para el formulario de inconvenientes y la lista de problemas */
+        #issue-form-container {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        #issue-form-container h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        #issue-add-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            resize: vertical;
+        }
+
+        #issue-add-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        #issue-add-form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #cancel-issue-add-btn {
+            background-color: #6c757d;
+        }
+
+        #cancel-issue-add-btn:hover {
+            background-color: #545b62;
+        }
+
+        .platform-issues li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .platform-issues li strong {
+            font-weight: bold;
+        }
+
+        .platform-issues li button.solve-issue-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .platform-issues li button.solve-issue-btn:hover {
+            background-color: #218838;
+        }
+
+        /* CSS para el formulario de CRUD y la tabla de usuarios */
+
+        /* Estilos para los grupos de formulario (labels e inputs) */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        /* Estilos para los botones del formulario */
+        #user-crud-form button[type="submit"],
+        #user-crud-form button[type="button"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        #user-crud-form button[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        #cancel-user-btn {
+            background-color: #6c757d;
+        }
+
+        #cancel-user-btn:hover {
+            background-color: #5a6268;
+        }
+
+        /* Estilos para la tabla de usuarios */
+        #user-list-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #user-list-container th,
+        #user-list-container td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        #user-list-container th {
+            background-color: #e9ecef;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        #user-list-container tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        #user-list-container tbody tr:hover {
+            background-color: #e2f0ff;
+        }
+
+        /* Estilos para los botones de acción dentro de la tabla (Editar/Eliminar) */
+        .edit-btn,
+        .delete-btn {
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            padding: 6px 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: #343a40;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Estilo para el contenedor del formulario de CRUD */
+        #user-form-container {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #user-form-container h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* Estilos para el formulario de simulación de edición de contenido */
+        #content-edit-simulation {
+            margin-bottom: 20px;
+            /* Eliminar la duplicación de este estilo, se definirá más abajo */
+        }
+
+        #content-edit-simulation h3 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        #simulated-content-form .form-group label {
+            font-weight: normal;
+            color: #444;
+        }
+
+        #simulated-content-form input[type="text"],
+        #simulated-content-form textarea,
+        #simulated-content-form select {
+            background-color: #f0faff;
+        }
+
+        #simulated-content-form button[type="submit"] {
+            background-color: #007bff;
+        }
+
+        #simulated-content-form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #cancel-sim-content-btn {
+            background-color: #dc3545;
+        }
+
+        #cancel-sim-content-btn:hover {
+            background-color: #c82333;
+        }
+
+        #preview-content-title {
+            color: #212529;
+        }
+
+        #preview-content-text {
+            color: #343a40;
+        }
+
+
+        /* Nuevos estilos para la tabla de contenido en Gestión de Plataforma */
+        #content-list-overview table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        #content-list-overview th,
+        #content-list-overview td {
+            padding: 10px;
+            border: 1px solid #aed6f1;
+            text-align: left;
+        }
+
+        #content-list-overview th {
+            background-color: #d1ecf1;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #content-list-overview tbody tr:nth-child(even) {
+            background-color: #f2faff;
+        }
+
+        #content-list-overview tbody tr:hover {
+            background-color: #cce5ff;
+        }
+
+        /* Ajustes para los botones dentro de la tabla de contenido */
+        #platform-content-table-body .edit-platform-btn,
+        #platform-content-table-body .delete-platform-btn {
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            padding: 6px 10px;
+            margin-right: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #platform-content-table-body .edit-platform-btn {
+            background-color: #ffc107;
+            /* Amarillo para editar */
+            color: #343a40;
+        }
+
+        #platform-content-table-body .edit-platform-btn:hover {
+            background-color: #e0a800;
+        }
+
+        #platform-content-table-body .delete-platform-btn {
+            background-color: #dc3545;
+            /* Rojo para eliminar */
+            color: white;
+        }
+
+        #platform-content-table-body .delete-platform-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Estilos para el botón de "Volver" */
+        #back-to-platform-overview {
+            background-color: #6c757d;
+            margin-top: 15px;
+        }
+
+        #back-to-platform-overview:hover {
+            background-color: #545b62;
         }
     </style>
 </head>
@@ -194,52 +527,173 @@
             <section id="usuarios" class="module-container">
                 <h2><i class="fas fa-users-cog"></i> Gestión de Usuarios</h2>
                 <div class="admin-actions">
-                    <button><i class="fas fa-plus-circle"></i> Crear Usuario</button>
-                    <button><i class="fas fa-edit"></i> Editar Usuario</button>
-                    <button><i class="fas fa-trash-alt"></i> Eliminar Usuario</button>
-                    <button><i class="fas fa-list"></i> Listar Usuarios</button>
+                    <button id="btn-crear-usuario"><i class="fas fa-plus-circle"></i> Crear Usuario</button>
+                    <button id="btn-listar-usuarios"><i class="fas fa-list"></i> Listar Usuarios</button>
                 </div>
-                <p>Operaciones de creación, lectura, actualización y eliminación (CRUD) de los diferentes usuarios del sistema (profesores, padres, alumnos).</p>
 
-                <p>Aquí podrá realizar operaciones de creación, lectura, actualización y eliminación (CRUD) de los
-                    diferentes usuarios del sistema (profesores, padres, alumnos).</p>
+                <div id="user-form-container"
+                    style="display: none; margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #f9f9f9;">
+                    <h3><span id="form-title">Crear Nuevo Usuario</span></h3>
+                    <form id="user-crud-form">
+                        <input type="hidden" id="user-id">
+                        <div class="form-group">
+                            <label for="user-name">Nombre:</label>
+                            <input type="text" id="user-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-role">Rol:</label>
+                            <select id="user-role" required>
+                                <option value="">Seleccionar Rol</option>
+                                <option value="alumno">Alumno</option>
+                                <option value="profesor">Profesor</option>
+                                <option value="auxiliar">Auxiliar</option>
+                                <option value="tutor">Tutor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">Email:</label>
+                            <input type="email" id="user-email" required>
+                        </div>
+                        <button type="submit" id="save-user-btn">Guardar Usuario</button>
+                        <button type="button" id="cancel-user-btn">Cancelar</button>
+                    </form>
+                </div>
+
+                <div id="user-list-container" style="margin-top: 20px;">
+                    <h3>Usuarios Registrados</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <thead>
+                            <tr style="background-color: #e2e6ea;">
+                                <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">ID</th>
+                                <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Nombre</th>
+                                <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Rol</th>
+                                <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Email</th>
+                                <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body">
+                            </tbody>
+                    </table>
+                </div>
 
             </section>
 
             <section id="plataforma" class="module-container" style="display: none;">
                 <h2><i class="fas fa-cogs"></i> Gestión de Plataforma</h2>
                 <div class="admin-actions">
-                    <button><i class="fas fa-plus-square"></i> Añadir Contenido</button>
-                    <button><i class="fas fa-edit"></i> Editar Contenido</button>
-                    <button><i class="fas fa-trash-alt"></i> Eliminar Contenido</button>
-                    <button><i class="fas fa-wrench"></i> Configuración General</button>
+                    <button id="btn-add-content"><i class="fas fa-plus-square"></i> Añadir Contenido</button>
+                    <button id="btn-edit-content"><i class="fas fa-edit"></i> Editar Contenido</button>
+                    <button id="btn-delete-content"><i class="fas fa-trash-alt"></i> Eliminar Contenido</button>
+                    <button id="btn-general-config"><i class="fas fa-wrench"></i> Configuración General</button>
+                    <button id="back-to-platform-overview" style="display:none;"><i class="fas fa-arrow-left"></i> Volver a Gestión de Plataforma</button>
                 </div>
-                <h3><i class="fas fa-exclamation-triangle"></i> Solicitudes de Cambio e Inconvenientes</h3>
-                <ul class="platform-issues">
+                <p>En esta sección se gestionan las solicitudes de cambio en la plataforma y se da seguimiento a los
+                    inconvenientes reportados por los usuarios.</p>
+
+                <div id="content-list-overview"
+                    style="display: none; margin-top: 20px; border: 1px solid #cce5ff; padding: 25px; border-radius: 8px; background-color: #e6f3ff;">
+                    <h3><i class="fas fa-list"></i> Contenido de la Plataforma</h3>
+                    <p>Selecciona un elemento para editar o eliminar:</p>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead>
+                            <tr style="background-color: #d1ecf1;">
+                                <th style="padding: 10px; border: 1px solid #aed6f1; text-align: left;">ID</th>
+                                <th style="padding: 10px; border: 1px solid #aed6f1; text-align: left;">Título</th>
+                                <th style="padding: 10px; border: 1px solid #aed6f1; text-align: left;">Tipo</th>
+                                <th style="padding: 10px; border: 1px solid #aed6f1; text-align: center;">Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="platform-content-table-body">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div id="issue-form-container"
+                    style="display: none; margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #f9f9f9;">
+                    <h3>Añadir Nuevo Contenido / Solicitud</h3>
+                    <form id="issue-add-form">
+                        <div class="form-group">
+                            <label for="issue-reporter">Autor/Fuente:</label>
+                            <input type="text" id="issue-reporter" placeholder="Ej: Administrador, Profesor Juan Pérez"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issue-description">Descripción/Contenido:</label>
+                            <textarea id="issue-description" rows="3"
+                                placeholder="Ingresa el título o una breve descripción del contenido" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="issue-type">Tipo de Contenido:</label>
+                            <select id="issue-type" required>
+                                <option value="">Seleccionar Tipo</option>
+                                <option value="articulo">Artículo</option>
+                                <option value="noticia">Noticia</option>
+                                <option value="modulo">Módulo Educativo</option>
+                                <option value="incidente">Incidente/Reporte</option>
+                                <option value="sugerencia">Sugerencia</option>
+                            </select>
+                        </div>
+                        <button type="submit">Guardar Contenido</button>
+                        <button type="button" id="cancel-issue-add-btn">Cancelar</button>
+                    </form>
+                </div>
+
+                <h3><i class="fas fa-exclamation-triangle"></i> Solicitudes de Cambio e Inconvenientes Pendientes</h3>
+                <ul class="platform-issues" id="issues-list">
                     <li>
                         <strong>Profesor [Nombre]:</strong> Error al cargar el gráfico de estadísticas.
-                        <button><i class="fas fa-check-circle"></i> Solucionar</button>
+                        <button class="solve-issue-btn"><i class="fas fa-check-circle"></i> Solucionar</button>
                     </li>
                     <li>
                         <strong>Padre/Tutor [Nombre]:</strong> Sugerencia para añadir más detalles al progreso en
                         juegos.
-                        <button><i class="fas fa-check-circle"></i> Solucionar</button>
-                    </li>
-                    <li>
-                        <strong>[Otro Usuario]:</strong> [Descripción del Inconveniente o Solicitud].
-                        <button><i class="fas fa-check-circle"></i> Solucionar</button>
+                        <button class="solve-issue-btn"><i class="fas fa-check-circle"></i> Solucionar</button>
                     </li>
                 </ul>
-                <p>En esta sección se gestionan las solicitudes de cambio en la plataforma y se da seguimiento a los
-                    inconvenientes reportados por los usuarios.</p>
+
+                <div id="content-edit-simulation"
+                    style="display: none; margin-top: 30px; border: 1px solid #cce5ff; padding: 25px; border-radius: 8px; background-color: #e6f3ff;">
+                    <h3><i class="fas fa-pencil-alt"></i> Editar Contenido / Configuración Específica</h3>
+                    <p id="edit-simulation-instruction">Edita los detalles del contenido o ajuste seleccionado:</p>
+
+                    <form id="simulated-content-form">
+                        <input type="hidden" id="editing-content-id">
+                        <div class="form-group">
+                            <label for="sim-content-title">Título/Nombre:</label>
+                            <input type="text" id="sim-content-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sim-content-text">Descripción/Valor:</label>
+                            <textarea id="sim-content-text" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="sim-content-type">Tipo/Categoría:</label>
+                            <input type="text" id="sim-content-type" required>
+                        </div>
+                        <button type="submit" id="save-sim-content-btn">Guardar Cambios</button>
+                        <button type="button" id="cancel-sim-content-btn">Cancelar</button>
+                    </form>
+
+                    <div style="margin-top: 20px; padding: 15px; border: 1px dashed #aed6f1; background-color: #f0f8ff;">
+                        <h4>Vista Previa del Elemento Actualizado:</h4>
+                        <p><strong>ID:</strong> <span id="preview-item-id">N/A</span></p>
+                        <p><strong>Título:</strong> <span id="preview-item-title"
+                                style="font-weight: bold; font-size: 1.1em;"></span></p>
+                        <p><strong>Descripción:</strong> <span id="preview-item-text"></span></p>
+                        <p><strong>Tipo:</strong> <span id="preview-item-type"></span></p>
+                    </div>
+                </div>
             </section>
 
             <section id="reportes" class="module-container" style="display: none;">
                 <h2><i class="fas fa-chart-pie"></i> Reportes del Sistema</h2>
                 <div class="admin-actions">
-                    <button><i class="fas fa-file-pdf"></i> Generar Reporte de Usuarios</button>
-                    <button><i class="fas fa-file-excel"></i> Exportar Datos de Actividad</button>
-                    <button><i class="fas fa-history"></i> Historial de Cambios</button>
+                    <button id="btn-generate-user-report"><i class="fas fa-file-pdf"></i> Generar Reporte de
+                        Usuarios</button>
+                    <button id="btn-export-activity-data"><i class="fas fa-file-excel"></i> Exportar Datos de
+                        Actividad</button>
+                    <button id="btn-history-changes"><i class="fas fa-history"></i> Historial de Cambios</button>
                 </div>
                 <p>Esta sección permite generar reportes sobre la actividad de los usuarios, el estado de la plataforma
                     y el historial de cambios realizados.</p>
@@ -251,7 +705,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.main-nav a');
             const contentSections = document.querySelectorAll('.content > section');
+            const logoutBtn = document.querySelector('.logout-btn');
 
+            // --- Funcionalidad de Navegación entre Secciones ---
             navLinks.forEach(link => {
                 link.addEventListener('click', function (event) {
                     event.preventDefault();
@@ -270,11 +726,417 @@
                 });
             });
 
-            // Mostrar la sección de "Gestión de Usuarios" al cargar la página
+            // Mostrar la sección de "Gestión de Usuarios" al cargar la página por defecto
             const initialSection = document.getElementById('usuarios');
             if (initialSection) {
                 initialSection.style.display = 'block';
             }
+
+            // --- Funcionalidad del Botón Salir ---
+            logoutBtn.addEventListener('click', function () {
+                // Aquí puedes añadir lógica para limpiar la sesión si estuvieras usando PHP
+                window.location.href = 'index.html'; // Redirige al index de selección de usuarios
+            });
+
+
+            // --- Simulación de CRUD de Usuarios (Datos "quemados") ---
+            let users = [
+                { id: 1, name: 'Juan Pérez', role: 'profesor', email: 'juan.perez@escuela.com' },
+                { id: 2, name: 'María López', role: 'alumno', email: 'maria.lopez@escuela.com' },
+                { id: 3, name: 'Carlos García', role: 'tutor', email: 'carlos.garcia@escuela.com' },
+                { id: 4, name: 'Ana Ruiz', role: 'auxiliar', email: 'ana.ruiz@escuela.com' }
+            ];
+            let nextUserId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1; // Para IDs únicos
+
+            const userTableBody = document.getElementById('user-table-body');
+            const userFormContainer = document.getElementById('user-form-container');
+            const userCrudForm = document.getElementById('user-crud-form');
+            const formTitle = document.getElementById('form-title');
+            const userIdInput = document.getElementById('user-id');
+            const userNameInput = document.getElementById('user-name');
+            const userRoleSelect = document.getElementById('user-role');
+            const userEmailInput = document.getElementById('user-email');
+            const btnCrearUsuario = document.getElementById('btn-crear-usuario');
+            const btnListarUsuarios = document.getElementById('btn-listar-usuarios');
+            const cancelUserBtn = document.getElementById('cancel-user-btn');
+
+            function renderUsers() {
+                userTableBody.innerHTML = '';
+                users.forEach(user => {
+                    const row = userTableBody.insertRow();
+                    row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.role.charAt(0).toUpperCase() + user.role.slice(1)}</td>
+                    <td>${user.email}</td>
+                    <td style="text-align: center;">
+                        <button class="edit-btn" data-id="${user.id}" style="background-color: #ffc107; color: #333; margin-right: 5px; padding: 5px 8px;"><i class="fas fa-edit"></i></button>
+                        <button class="delete-btn" data-id="${user.id}" style="background-color: #dc3545; color: white; padding: 5px 8px;"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                `;
+                });
+
+                document.querySelectorAll('.edit-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const idToEdit = parseInt(this.dataset.id);
+                        editUser(idToEdit);
+                    });
+                });
+
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const idToDelete = parseInt(this.dataset.id);
+                        deleteUser(idToDelete);
+                    });
+                });
+            }
+
+            btnCrearUsuario.addEventListener('click', () => {
+                formTitle.textContent = 'Crear Nuevo Usuario';
+                userIdInput.value = '';
+                userCrudForm.reset();
+                userFormContainer.style.display = 'block';
+            });
+
+            cancelUserBtn.addEventListener('click', () => {
+                userFormContainer.style.display = 'none';
+                userCrudForm.reset();
+                renderUsers();
+            });
+
+            userCrudForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const id = userIdInput.value ? parseInt(userIdInput.value) : null;
+                const name = userNameInput.value;
+                const role = userRoleSelect.value;
+                const email = userEmailInput.value;
+
+                if (id) {
+                    const index = users.findIndex(u => u.id === id);
+                    if (index !== -1) {
+                        users[index] = { id, name, role, email };
+                    }
+                } else {
+                    users.push({ id: nextUserId++, name, role, email });
+                }
+                userFormContainer.style.display = 'none';
+                renderUsers();
+                userCrudForm.reset();
+            });
+
+            function editUser(id) {
+                const userToEdit = users.find(user => user.id === id);
+                if (userToEdit) {
+                    formTitle.textContent = 'Editar Usuario';
+                    userIdInput.value = userToEdit.id;
+                    userNameInput.value = userToEdit.name;
+                    userRoleSelect.value = userToEdit.role;
+                    userEmailInput.value = userToEdit.email;
+                    userFormContainer.style.display = 'block';
+                }
+            }
+
+            function deleteUser(id) {
+                if (confirm(`¿Estás seguro de que quieres eliminar al usuario con ID ${id}?`)) {
+                    users = users.filter(user => user.id !== id);
+                    renderUsers();
+                }
+            }
+            renderUsers(); // Inicializar la tabla de usuarios
+
+
+            // --- Simulación de Gestión de Plataforma (Inconvenientes/Solicitudes y Contenido) ---
+            let issues = [
+                { id: 1, reporter: 'Profesor [Nombre]', description: 'Error al cargar el gráfico de estadísticas.' },
+                { id: 2, reporter: 'Padre/Tutor [Nombre]', description: 'Sugerencia para añadir más detalles al progreso en juegos.' },
+                { id: 3, reporter: 'Auxiliar [Nombre]', description: 'El enlace de descarga del informe de asistencia no funciona.' }
+            ];
+            let nextIssueId = issues.length > 0 ? Math.max(...issues.map(i => i.id)) + 1 : 1;
+
+            const issuesList = document.getElementById('issues-list');
+            const issueFormContainer = document.getElementById('issue-form-container');
+            const issueAddForm = document.getElementById('issue-add-form');
+            const issueReporterInput = document.getElementById('issue-reporter');
+            const issueDescriptionInput = document.getElementById('issue-description');
+            const issueTypeSelect = document.getElementById('issue-type');
+            const cancelIssueAddBtn = document.getElementById('cancel-issue-add-btn');
+
+            function renderIssues() {
+                issuesList.innerHTML = '';
+                if (issues.length === 0) {
+                    issuesList.innerHTML = '<li>No hay inconvenientes ni solicitudes pendientes. ¡Todo en orden!</li>';
+                    return;
+                }
+                issues.forEach(issue => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                    <strong>${issue.reporter} (${issue.type ? issue.type : 'Incidente'}):</strong> ${issue.description}
+                    <button class="solve-issue-btn" data-id="${issue.id}"><i class="fas fa-check-circle"></i> Solucionar</button>
+                `;
+                    issuesList.appendChild(li);
+                });
+
+                document.querySelectorAll('.solve-issue-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const idToSolve = parseInt(this.dataset.id);
+                        solveIssue(idToSolve);
+                    });
+                });
+            }
+
+            issueAddForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const reporter = issueReporterInput.value;
+                const description = issueDescriptionInput.value;
+                const type = issueTypeSelect.value;
+                issues.push({ id: nextIssueId++, reporter, description, type });
+                issueFormContainer.style.display = 'none';
+                renderIssues();
+                issueAddForm.reset();
+                alert('Contenido/Solicitud añadido correctamente.');
+                showPlatformOverview(); // Volver a la vista principal de plataforma
+            });
+
+            cancelIssueAddBtn.addEventListener('click', () => {
+                issueFormContainer.style.display = 'none';
+                issueAddForm.reset();
+                showPlatformOverview();
+            });
+
+            function solveIssue(id) {
+                if (confirm(`¿Estás seguro de que este inconveniente (ID: ${id}) ha sido solucionado?`)) {
+                    issues = issues.filter(issue => issue.id !== id);
+                    renderIssues();
+                    alert('Inconveniente marcado como solucionado.');
+                }
+            }
+            renderIssues(); // Inicializar la lista de inconvenientes
+
+            // --- Contenido de Plataforma Simulado (para Editar/Eliminar) ---
+            let platformContents = [
+                { id: 101, title: 'Política de Privacidad', description: 'Documento legal sobre el manejo de datos de usuarios.', type: 'Página' },
+                { id: 102, title: 'Tutorial: Primeros Pasos para Alumnos', description: 'Guía interactiva para nuevos estudiantes en la plataforma.', type: 'Módulo' },
+                { id: 103, title: 'Anuncio: Mantenimiento 20/05', description: 'Información sobre el próximo mantenimiento programado de la plataforma.', type: 'Noticia' },
+                { id: 104, title: 'Configuración de Notificaciones', description: 'Ajustes para personalizar las alertas por email y dentro de la app.', type: 'Ajuste' }
+            ];
+            let nextContentId = platformContents.length > 0 ? Math.max(...platformContents.map(c => c.id)) + 1 : 101;
+
+            const platformContentTableBody = document.getElementById('platform-content-table-body');
+            const contentListOverview = document.getElementById('content-list-overview');
+            const contentEditSimulationDiv = document.getElementById('content-edit-simulation');
+            const simulatedContentForm = document.getElementById('simulated-content-form');
+            const editingContentIdInput = document.getElementById('editing-content-id');
+            const simContentTitleInput = document.getElementById('sim-content-title');
+            const simContentTextInput = document.getElementById('sim-content-text');
+            const simContentTypeInput = document.getElementById('sim-content-type');
+            const previewItemId = document.getElementById('preview-item-id');
+            const previewItemTitle = document.getElementById('preview-item-title');
+            const previewItemText = document.getElementById('preview-item-text');
+            const previewItemType = document.getElementById('preview-item-type');
+            const saveSimContentBtn = document.getElementById('save-sim-content-btn');
+            const cancelSimContentBtn = document.getElementById('cancel-sim-content-btn');
+
+            // Botones principales de Gestión de Plataforma
+            const btnAddContent = document.getElementById('btn-add-content');
+            const btnEditContent = document.getElementById('btn-edit-content');
+            const btnDeleteContent = document.getElementById('btn-delete-content');
+            const btnGeneralConfig = document.getElementById('btn-general-config');
+            const backToPlatformOverviewBtn = document.getElementById('back-to-platform-overview');
+
+            function renderPlatformContentTable() {
+                platformContentTableBody.innerHTML = '';
+                platformContents.forEach(content => {
+                    const row = platformContentTableBody.insertRow();
+                    row.innerHTML = `
+                    <td>${content.id}</td>
+                    <td>${content.title}</td>
+                    <td>${content.type}</td>
+                    <td style="text-align: center;">
+                        <button class="edit-platform-btn" data-id="${content.id}"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="delete-platform-btn" data-id="${content.id}" style="background-color: #dc3545;"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </td>
+                `;
+                });
+
+                document.querySelectorAll('.edit-platform-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const idToEdit = parseInt(this.dataset.id);
+                        editPlatformContent(idToEdit);
+                    });
+                });
+
+                document.querySelectorAll('.delete-platform-btn').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const idToDelete = parseInt(this.dataset.id);
+                        deletePlatformContent(idToDelete);
+                    });
+                });
+            }
+
+            // Función para mostrar solo la vista principal de la plataforma (ocultar formularios/listados secundarios)
+            function showPlatformOverview() {
+                contentListOverview.style.display = 'none';
+                issueFormContainer.style.display = 'none';
+                contentEditSimulationDiv.style.display = 'none';
+                backToPlatformOverviewBtn.style.display = 'none';
+                // Asegúrate de que los botones principales de la plataforma estén visibles si es necesario
+                btnAddContent.style.display = 'inline-block';
+                btnEditContent.style.display = 'inline-block';
+                btnDeleteContent.style.display = 'inline-block';
+                btnGeneralConfig.style.display = 'inline-block';
+            }
+
+            // Función para volver a la vista principal de la plataforma
+            backToPlatformOverviewBtn.addEventListener('click', showPlatformOverview);
+
+            // Eventos para los botones principales de Gestión de Plataforma
+            btnAddContent.addEventListener('click', () => {
+                issueAddForm.reset();
+                issueFormContainer.style.display = 'block';
+                contentListOverview.style.display = 'none';
+                contentEditSimulationDiv.style.display = 'none';
+                backToPlatformOverviewBtn.style.display = 'block'; // Mostrar botón Volver
+                // Ocultar botones principales cuando se muestra un sub-formulario
+                btnAddContent.style.display = 'none';
+                btnEditContent.style.display = 'none';
+                btnDeleteContent.style.display = 'none';
+                btnGeneralConfig.style.display = 'none';
+                //alert('Abriendo formulario para añadir nuevo contenido/solicitud.'); // Puedes quitar este alert si el usuario ya ve el formulario
+            });
+
+            btnEditContent.addEventListener('click', () => {
+                renderPlatformContentTable(); // Renderiza la tabla de contenido
+                contentListOverview.style.display = 'block';
+                issueFormContainer.style.display = 'none';
+                contentEditSimulationDiv.style.display = 'none';
+                backToPlatformOverviewBtn.style.display = 'block'; // Mostrar botón Volver
+                // Ocultar botones principales cuando se muestra un sub-formulario
+                btnAddContent.style.display = 'none';
+                btnEditContent.style.display = 'none';
+                btnDeleteContent.style.display = 'none';
+                btnGeneralConfig.style.display = 'none';
+                //alert('Selecciona un contenido de la lista para editar.'); // Puedes quitar este alert
+            });
+
+            btnDeleteContent.addEventListener('click', () => {
+                renderPlatformContentTable(); // Renderiza la tabla de contenido
+                contentListOverview.style.display = 'block';
+                issueFormContainer.style.display = 'none';
+                contentEditSimulationDiv.style.display = 'none';
+                backToPlatformOverviewBtn.style.display = 'block'; // Mostrar botón Volver
+                // Ocultar botones principales cuando se muestra un sub-formulario
+                btnAddContent.style.display = 'none';
+                btnEditContent.style.display = 'none';
+                btnDeleteContent.style.display = 'none';
+                btnGeneralConfig.style.display = 'none';
+                //alert('Selecciona un contenido de la lista para eliminar.'); // Puedes quitar este alert
+            });
+
+            btnGeneralConfig.addEventListener('click', () => {
+                // Reutilizamos el formulario de edición para simular configuración general
+                contentEditSimulationDiv.style.display = 'block';
+                issueFormContainer.style.display = 'none';
+                contentListOverview.style.display = 'none';
+                backToPlatformOverviewBtn.style.display = 'block'; // Mostrar botón Volver
+                // Ocultar botones principales cuando se muestra un sub-formulario
+                btnAddContent.style.display = 'none';
+                btnEditContent.style.display = 'none';
+                btnDeleteContent.style.display = 'none';
+                btnGeneralConfig.style.display = 'none';
+
+
+                // Precargar valores para simular configuración general
+                editingContentIdInput.value = 'config_general'; // Un ID especial
+                simContentTitleInput.value = "Nombre de la Escuela";
+                simContentTextInput.value = "Escuela Modelo de Desarrollo Web";
+                simContentTypeInput.value = "Ajuste Global";
+                document.getElementById('edit-simulation-instruction').textContent = "Edita la configuración general de la plataforma:";
+
+                //alert('Accediendo a la configuración general de la plataforma.'); // Puedes quitar este alert
+            });
+
+
+            // Lógica para editar contenido de la plataforma
+            function editPlatformContent(id) {
+                const contentToEdit = platformContents.find(content => content.id === id);
+                if (contentToEdit) {
+                    editingContentIdInput.value = contentToEdit.id;
+                    simContentTitleInput.value = contentToEdit.title;
+                    simContentTextInput.value = contentToEdit.description;
+                    simContentTypeInput.value = contentToEdit.type;
+
+                    document.getElementById('edit-simulation-instruction').textContent = `Edita: ${contentToEdit.title}`;
+
+                    contentEditSimulationDiv.style.display = 'block';
+                    contentListOverview.style.display = 'none'; // Ocultar la lista al editar
+                }
+            }
+
+            // Lógica para guardar los cambios en la simulación de contenido
+            simulatedContentForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const id = editingContentIdInput.value;
+                const newTitle = simContentTitleInput.value;
+                const newText = simContentTextInput.value;
+                const newType = simContentTypeInput.value;
+
+                if (id === 'config_general') {
+                    alert(`Configuración General Guardada:\nNombre: ${newTitle}\nDescripción: ${newText}\nTipo: ${newType}`);
+                } else {
+                    const index = platformContents.findIndex(c => c.id === parseInt(id));
+                    if (index !== -1) {
+                        platformContents[index] = { id: parseInt(id), title: newTitle, description: newText, type: newType };
+                        alert(`Contenido "${newTitle}" actualizado correctamente.`);
+                    } else {
+                        alert('Error: Contenido a actualizar no encontrado.');
+                    }
+                }
+
+                // Actualizar vista previa
+                previewItemId.textContent = id;
+                previewItemTitle.textContent = newTitle;
+                previewItemText.textContent = newText;
+                previewItemType.textContent = newType;
+
+                contentEditSimulationDiv.style.display = 'none'; // Ocultar formulario después de guardar
+                showPlatformOverview(); // Volver a la vista principal
+            });
+
+            // Lógica para cancelar la edición de contenido
+            cancelSimContentBtn.addEventListener('click', () => {
+                contentEditSimulationDiv.style.display = 'none'; // Ocultar formulario
+                alert('Edición/Configuración cancelada.');
+                showPlatformOverview(); // Volver a la vista principal
+            });
+
+            // Lógica para eliminar contenido de la plataforma
+            function deletePlatformContent(id) {
+                if (confirm(`¿Estás seguro de que quieres eliminar este contenido (ID: ${id})?`)) {
+                    platformContents = platformContents.filter(content => content.id !== id);
+                    renderPlatformContentTable(); // Volver a renderizar la tabla
+                    alert('Contenido eliminado correctamente.');
+                    // showPlatformOverview(); // Podríamos volver aquí si la lista se queda vacía
+                }
+            }
+
+
+            // --- Simulación de Reportes ---
+            const btnGenerateUserReport = document.getElementById('btn-generate-user-report');
+            const btnExportActivityData = document.getElementById('btn-export-activity-data');
+            const btnHistoryChanges = document.getElementById('btn-history-changes');
+
+            btnGenerateUserReport.addEventListener('click', () => {
+                alert('Simulación: Generando reporte de usuarios en PDF...');
+            });
+
+            btnExportActivityData.addEventListener('click', () => {
+                alert('Simulación: Exportando datos de actividad a Excel...');
+            });
+
+            btnHistoryChanges.addEventListener('click', () => {
+                alert('Simulación: Mostrando historial de cambios...');
+            });
+
         });
     </script>
 </body>
