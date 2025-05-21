@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +10,13 @@
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #fce4ec;
-            /* Rosa suave y divertido */
+            background-color: #fce4ec; /* Rosa suave y divertido */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            overflow: hidden; /* Evita barras de desplazamiento si el contenido es un poco más grande */
         }
 
         .login-container {
@@ -27,19 +26,19 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
             text-align: center;
             width: 350px;
+            max-width: 90%; /* Asegura que se adapte a pantallas pequeñas */
+            box-sizing: border-box; /* Incluye padding en el ancho total */
         }
 
         h2 {
-            color: #e91e63;
-            /* Rosa más intenso */
+            color: #e91e63; /* Rosa más intenso */
             margin-bottom: 30px;
             font-size: 2em;
         }
 
         .child-icon {
             font-size: 4em;
-            color: #ffab91;
-            /* Naranja melocotón */
+            color: #ffab91; /* Naranja melocotón */
             margin-bottom: 20px;
         }
 
@@ -52,8 +51,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #795548;
-            /* Marrón suave */
+            color: #795548; /* Marrón suave */
             font-size: 1.1em;
         }
 
@@ -61,36 +59,50 @@
         .form-group input[type="password"] {
             width: 100%;
             padding: 12px;
-            border: 2px solid #ffccbc;
-            /* Borde naranja claro */
+            border: 2px solid #ffccbc; /* Borde naranja claro */
             border-radius: 8px;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Incluye padding en el ancho total */
             font-size: 1em;
         }
 
+        .login-buttons {
+            display: flex;
+            flex-direction: column; /* Apila los botones en pantallas pequeñas */
+            gap: 15px; /* Espacio entre botones */
+            margin-top: 30px;
+        }
+
         button {
-            background-color: #ff8a65;
-            /* Naranja más brillante */
+            background-color: #ff8a65; /* Naranja más brillante */
             color: white;
             padding: 15px 20px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             font-size: 1.2em;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Añade transición a transform */
+            width: 100%; /* Ocupa todo el ancho disponible */
         }
 
         button:hover {
             background-color: #f4511e;
+            transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+        }
+
+        .back-button {
+            background-color: #90a4ae; /* Un gris azulado para el botón de volver */
+        }
+
+        .back-button:hover {
+            background-color: #607d8b;
         }
     </style>
 </head>
-
 <body>
     <div class="login-container">
         <i class="fas fa-child fa-4x child-icon"></i>
         <h2>¡Hola, Pequeño Explorador!</h2>
-        <form>
+        <form id="childLoginForm">
             <div class="form-group">
                 <label for="username">Nombre de Usuario:</label>
                 <input type="text" id="username" name="username" required>
@@ -99,11 +111,37 @@
                 <label for="password">Contraseña Secreta:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">¡Entrar al Juego!</button>
-            <button type="button" onclick="window.location.href='index.html'" class="back-button">Volver a Selección de
-                Usuario</button>
+            <div class="login-buttons">
+                <button type="submit">¡Entrar al Juego!</button>
+                <button type="button" class="back-button" onclick="window.location.href='index.html'">Volver a Selección de Usuario</button>
+            </div>
         </form>
     </div>
-</body>
 
+    <script>
+        document.getElementById('childLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulación de credenciales
+            if (username === 'nino1' && password === 'clavenino') {
+                // Almacena el nombre del niño para mostrarlo en el dashboard
+                localStorage.setItem('childName', 'Leo');
+                window.location.href = 'dashboard_alumno.html';
+            } else if (username === 'nino2' && password === 'abcd') {
+                localStorage.setItem('childName', 'Sofía');
+                window.location.href = 'dashboard_alumno.html';
+            }
+            else {
+                alert('¡Ups! Nombre de usuario o contraseña incorrectos. ¡Intenta de nuevo!');
+            }
+        });
+
+        // Este botón "Volver a Selección de Usuario" en un entorno real podría llevar a una página de selección de roles (padre, niño, etc.)
+        // Por ahora, lo he configurado para recargar la misma página si no hay una "selección de usuario" previa.
+        // Si tienes una página de "selección de usuario" diferente, cambia 'index.html' por la ruta correcta.
+    </script>
+</body>
 </html>
