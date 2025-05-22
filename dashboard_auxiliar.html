@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Auxiliar - Apoyo Educativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f8e9; /* Very light green background */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #66bb6a; /* Main green color */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-icon {
+            color: #f3f3ee;
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .user-details h2 {
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+        }
+
+        .logout-btn {
+            background: none;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .main-nav {
+            background-color: #4caf50; /* Darker green for navigation */
+            color: white;
+            padding: 15px 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* For responsiveness */
+        }
+
+        .main-nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .main-nav li a:hover,
+        .main-nav li a.active {
+            background-color: #388e3c; /* Even darker green on hover/active */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .module-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .module-container h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .module-container h2 i {
+            margin-right: 8px;
+            color: #4caf50; /* Color for title icon */
+        }
+
+        .module-container p.module-description {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        /* Styles for hiding/showing sections */
+        .content section {
+            display: none; /* All sections hidden by default */
+        }
+
+        .content section.active-section {
+            display: block; /* Active section is shown */
+        }
+
+        /* Specific styles for student/task lists */
+        .student-list, .resource-grid, .message-list, .history-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .student-list li, .message-list li, .history-list li {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .student-info, .message-info, .history-info {
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .student-info strong, .message-info strong {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-complete {
+            background-color: #28a745; /* Green */
+        }
+        .btn-complete:hover { background-color: #218838; }
+
+        .btn-view-details {
+            background-color: #007bff; /* Blue */
+        }
+        .btn-view-details:hover { background-color: #0056b3; }
+
+        .btn-reply {
+            background-color: #ffc107; /* Yellow */
+            color: #333;
+        }
+        .btn-reply:hover { background-color: #e0a800; }
+
+        .btn-archive {
+            background-color: #6c757d; /* Grey */
+        }
+        .btn-archive:hover { background-color: #5a6268; }
+
+        /* Styles for resource/game grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-card {
+            background-color: #e8f5e9; /* Soft background for cards */
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .resource-card i {
+            font-size: 2.5em;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .resource-card h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .resource-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .user-info {
+                flex-direction: column;
+                margin-bottom: 15px;
+            }
+            .avatar-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .logout-btn {
+                margin-left: 0;
+                width: 80%;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-nav li {
+                width: 90%;
+                margin: 5px 0;
+            }
+            .main-nav li a {
+                justify-content: center;
+            }
+            .student-list li, .message-list li, .history-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .action-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+            .action-buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header>
+            <div class="user-info">
+                <i class="fas fa-user-tag avatar-icon"></i> <div class="user-details">
+                    <h2 id="auxiliarNameHeader">¡Hola, Auxiliar [Auxiliar Name]!</h2>
+                    <p>Rol: Apoyo Educativo</p>
+                </div>
+            </div>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#refuerzos-asignados" class="active"><i class="fas fa-child"></i> Refuerzos Asignados</a></li>
+                <li><a href="#recursos-juegos"><i class="fas fa-puzzle-piece"></i> Recursos y Juegos</a></li>
+                <li><a href="#comunicacion"><i class="fas fa-comments"></i> Comunicación</a></li>
+                <li><a href="#historial-apoyos"><i class="fas fa-history"></i> Historial de Apoyos</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="refuerzos-asignados" class="module-container active-section">
+                <h2><i class="fas fa-child"></i> Alumnos Asignados para Refuerzo</h2>
+                <p class="module-description">Here you will find the list of students who need your special support, assigned by the teachers.</p>
+                <ul class="student-list">
+                    <li>
+                        <div class="student-info">
+                            <strong>Alumno: Carlos López</strong>
+                            <p>Asignado por: Profesor Juan</p>
+                            <p>Necesita refuerzo en: Matemáticas (Sumas y Restas)</p>
+                            <p>Última actualización: 20/05/2025</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-complete"><i class="fas fa-check-circle"></i> Marcar Completado</button>
+                            <button class="btn-view-details"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="student-info">
+                            <strong>Alumno: Mateo Vargas</strong>
+                            <p>Asignado por: Profesora Ana</p>
+                            <p>Necesita refuerzo en: Lenguaje (Comprensión Lectora)</p>
+                            <p>Última actualización: 18/05/2025</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-complete"><i class="fas fa-check-circle"></i> Marcar Completado</button>
+                            <button class="btn-view-details"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="student-info">
+                            <strong>Alumno: Sofía Gómez</strong>
+                            <p>Asignado por: Profesor Pedro</p>
+                            <p>Necesita apoyo en: Atención y Concentración</p>
+                            <p>Última actualización: 15/05/2025</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-complete"><i class="fas fa-check-circle"></i> Marcar Completado</button>
+                            <button class="btn-view-details"><i class="fas fa-info-circle"></i> Ver Detalles</button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="recursos-juegos" class="module-container">
+                <h2><i class="fas fa-puzzle-piece"></i> Recursos y Juegos Educativos</h2>
+                <p class="module-description">Explore new teaching materials and interactive games for your support sessions.</p>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <i class="fas fa-calculator"></i>
+                        <h3>Juego de Sumas Rápidas</h3>
+                        <p>Ideal for reinforcing basic math operations.</p>
+                        <button class="btn-view-details">Ver Recurso</button>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-book-reader"></i>
+                        <h3>Cuentos Interactivos</h3>
+                        <p>Improves reading comprehension and vocabulary in a fun way.</p>
+                        <button class="btn-view-details">Ver Recurso</button>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Actividades de Concentración</h3>
+                        <p>Exercises to help children improve their focus.</p>
+                        <button class="btn-view-details">Ver Recurso</button>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Taller de Creatividad</h3>
+                        <p>Artistic activities to stimulate imagination and expression.</p>
+                        <button class="btn-view-details">Ver Recurso</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comunicacion" class="module-container">
+                <h2><i class="fas fa-comments"></i> Comunicación con Profesores y Tutores</h2>
+                <p class="module-description">Send and receive important messages from teachers and student guardians.</p>
+                <ul class="message-list">
+                    <li>
+                        <div class="message-info">
+                            <strong>De: Profesor Juan</strong>
+                            <p>Asunto: Seguimiento de Carlos López</p>
+                            <p>Mensaje: ¿Cómo va Carlos con las sumas? ¿Necesitas algún material adicional?</p>
+                            <small>Recibido: 21/05/2025, 10:30 AM</small>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-reply"><i class="fas fa-reply"></i> Responder</button>
+                            <button class="btn-archive"><i class="fas fa-box"></i> Archivar</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="message-info">
+                            <strong>De: Tutor de Mateo Vargas</strong>
+                            <p>Asunto: Pregunta sobre horario de apoyo</p>
+                            <p>Mensaje: Me gustaría coordinar un horario para Mateo. ¿Estás disponible el jueves?</p>
+                            <small>Recibido: 20/05/2025, 03:15 PM</small>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-reply"><i class="fas fa-reply"></i> Responder</button>
+                            <button class="btn-archive"><i class="fas fa-box"></i> Archivar</button>
+                        </div>
+                    </li>
+                </ul>
+                <button class="btn-view-details" style="margin-top: 15px;"><i class="fas fa-paper-plane"></i> Enviar Nuevo Mensaje</button>
+            </section>
+
+            <section id="historial-apoyos" class="module-container">
+                <h2><i class="fas fa-history"></i> Historial de Sesiones de Apoyo</h2>
+                <p class="module-description">Review a record of all support sessions you have provided to students.</p>
+                <ul class="history-list">
+                    <li>
+                        <div class="history-info">
+                            <strong>Alumno: Carlos López</strong>
+                            <p>Fecha: 19/05/2025</p>
+                            <p>Tema: Refuerzo de Sumas con Llevadas</p>
+                            <p>Notas: Buen progreso, se usó el juego "Matemáticas Mágicas".</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-view-details">Ver Detalles</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="history-info">
+                            <strong>Alumno: Mateo Vargas</strong>
+                            <p>Fecha: 17/05/2025</p>
+                            <p>Tema: Ejercicios de Comprensión de Textos Cortos</p>
+                            <p>Notas: Se notó mayor interés con cuentos de animales.</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-view-details">Ver Detalles</button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Personalize the auxiliary's name
+            const auxiliarName = localStorage.getItem('auxiliarName') || 'Auxiliar';
+            document.getElementById('auxiliarNameHeader').textContent = `¡Hola, Auxiliar ${auxiliarName}!`;
+
+            const navLinks = document.querySelectorAll('.main-nav a');
+            const contentSections = document.querySelectorAll('.content section');
+
+            // Function to handle clicks on navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default link behavior
+
+                    // Remove 'active' class from all navigation links
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    // Add 'active' class to the clicked link
+                    this.classList.add('active');
+
+                    // Get the target section ID
+                    const targetSectionId = this.getAttribute('href').substring(1);
+
+                    // Hide all content sections
+                    contentSections.forEach(section => {
+                        section.classList.remove('active-section');
+                    });
+
+                    // Show the target section
+                    const targetSection = document.getElementById(targetSectionId);
+                    if (targetSection) {
+                        targetSection.classList.add('active-section');
+                    }
+                });
+            });
+
+            // Logout functionality
+            const logoutButton = document.querySelector(".logout-btn");
+            if (logoutButton) {
+                logoutButton.addEventListener("click", () => {
+                    alert("¡Sesión cerrada! ¡Hasta pronto!");
+                    localStorage.removeItem('auxiliarName'); // Clear auxiliary's name on logout
+                    window.location.href = "index.html"; // Redirect to user selection page
+                });
+            }
+
+            // Show the "Assigned Reinforcements" section on page load
+            const initialSection = document.getElementById('refuerzos-asignados');
+            if (initialSection) {
+                initialSection.classList.add('active-section');
+            }
+
+            // Simulation of button interactions (you can expand this)
+            document.querySelectorAll('.btn-complete').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('¡Tarea de refuerzo marcada como completada!');
+                    // Logic to update status in the backend
+                });
+            });
+
+            document.querySelectorAll('.btn-view-details').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('¡Mostrando detalles del recurso o perfil del alumno!');
+                    // Logic to load specific details
+                });
+            });
+
+            document.querySelectorAll('.btn-reply').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('¡Abriendo ventana para responder mensaje!');
+                    // Logic to open a reply form
+                });
+            });
+
+            document.querySelectorAll('.btn-archive').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('¡Mensaje archivado!');
+                    // Logic to archive the message
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

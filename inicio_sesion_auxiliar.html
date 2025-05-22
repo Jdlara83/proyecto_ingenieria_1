@@ -82,12 +82,15 @@
         .back-button:hover {
             background-color: #545b62;
         }
+        .auxiliar-icon{
+           color: rgb(118, 11, 240);
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <i class="fas fa-chalkboard-teacher fa-3x user-icon"></i>
-        <h1>Iniciar Sesión Profesor</h1>
+       <i class="fas fa-user-cog fa-4x auxiliar-icon"></i>
+        <h1>Iniciar Sesión Auxiliar</h1>
         <form id="login-form-profesor">
             <div class="form-group">
                 <label for="username">Usuario:</label>
@@ -98,7 +101,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">Iniciar Sesión</button>
-            <button type="button" onclick="window.location.href='inicio_sesion_ninos.html'" class="back-button">Volver a Selección de Usuario</button>
+            <button type="button" onclick="window.location.href='index.html'" class="back-button">Volver a Selección de Usuario</button>
         </form>
     </div>
 
@@ -112,8 +115,8 @@
                 const password = document.getElementById('password').value;
 
                 // Aquí iría la lógica real de autenticación del profesor
-                if (username === 'profesor1' && password === 'claveprofesor') {
-                    window.location.href = 'dashboard_profesor.html'; // Redirigir al panel del profesor
+                if (username === 'auxiliar1' && password === 'claveauxiliar') {
+                    window.location.href = 'dashboard_auxiliar.html'; // Redirigir al panel del profesor
                 } else {
                     alert('Credenciales incorrectas. Intente de nuevo.');
                 }
