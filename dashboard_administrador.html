@@ -164,7 +164,7 @@
             background-color: #c82333;
         }
 
-        /* Nuevo CSS para el formulario de inconvenientes y la lista de problemas */
+        /* formulario de inconvenientes y la lista de problemas */
         #issue-form-container {
             background-color: #fff;
             border: 1px solid #dee2e6;
@@ -385,7 +385,6 @@
         /* Estilos para el formulario de simulación de edición de contenido */
         #content-edit-simulation {
             margin-bottom: 20px;
-            /* Eliminar la duplicación de este estilo, se definirá más abajo */
         }
 
         #content-edit-simulation h3 {
@@ -429,7 +428,7 @@
         }
 
 
-        /* Nuevos estilos para la tabla de contenido en Gestión de Plataforma */
+        /* estilos para la tabla de contenido en Gestión de Plataforma */
         #content-list-overview table {
             width: 100%;
             border-collapse: collapse;
@@ -471,7 +470,6 @@
 
         #platform-content-table-body .edit-platform-btn {
             background-color: #ffc107;
-            /* Amarillo para editar */
             color: #343a40;
         }
 
@@ -481,7 +479,6 @@
 
         #platform-content-table-body .delete-platform-btn {
             background-color: #dc3545;
-            /* Rojo para eliminar */
             color: white;
         }
 
@@ -734,7 +731,8 @@
 
             // --- Funcionalidad del Botón Salir ---
             logoutBtn.addEventListener('click', function () {
-                // Aquí puedes añadir lógica para limpiar la sesión si estuvieras usando PHP
+                alert("¡Sesión cerrada! ¡Hasta pronto!");
+                // logica para PHP
                 window.location.href = 'index.html'; // Redirige al index de selección de usuarios
             });
 
@@ -979,7 +977,7 @@
                 issueFormContainer.style.display = 'none';
                 contentEditSimulationDiv.style.display = 'none';
                 backToPlatformOverviewBtn.style.display = 'none';
-                // Asegúrate de que los botones principales de la plataforma estén visibles si es necesario
+                // botones principales de la plataforma
                 btnAddContent.style.display = 'inline-block';
                 btnEditContent.style.display = 'inline-block';
                 btnDeleteContent.style.display = 'inline-block';
@@ -1001,7 +999,7 @@
                 btnEditContent.style.display = 'none';
                 btnDeleteContent.style.display = 'none';
                 btnGeneralConfig.style.display = 'none';
-                //alert('Abriendo formulario para añadir nuevo contenido/solicitud.'); // Puedes quitar este alert si el usuario ya ve el formulario
+                //alert('Abriendo formulario para añadir nuevo contenido/solicitud.');
             });
 
             btnEditContent.addEventListener('click', () => {
@@ -1015,7 +1013,7 @@
                 btnEditContent.style.display = 'none';
                 btnDeleteContent.style.display = 'none';
                 btnGeneralConfig.style.display = 'none';
-                //alert('Selecciona un contenido de la lista para editar.'); // Puedes quitar este alert
+                //alert('Selecciona un contenido de la lista para editar.'); //
             });
 
             btnDeleteContent.addEventListener('click', () => {
@@ -1029,7 +1027,7 @@
                 btnEditContent.style.display = 'none';
                 btnDeleteContent.style.display = 'none';
                 btnGeneralConfig.style.display = 'none';
-                //alert('Selecciona un contenido de la lista para eliminar.'); // Puedes quitar este alert
+                //alert('Selecciona un contenido de la lista para eliminar.'); 
             });
 
             btnGeneralConfig.addEventListener('click', () => {
@@ -1052,7 +1050,7 @@
                 simContentTypeInput.value = "Ajuste Global";
                 document.getElementById('edit-simulation-instruction').textContent = "Edita la configuración general de la plataforma:";
 
-                //alert('Accediendo a la configuración general de la plataforma.'); // Puedes quitar este alert
+                //alert('Accediendo a la configuración general de la plataforma.');
             });
 
 
@@ -1115,7 +1113,7 @@
                     platformContents = platformContents.filter(content => content.id !== id);
                     renderPlatformContentTable(); // Volver a renderizar la tabla
                     alert('Contenido eliminado correctamente.');
-                    // showPlatformOverview(); // Podríamos volver aquí si la lista se queda vacía
+                    // showPlatformOverview(); // Se devuelve aquí si la lista se queda vacía
                 }
             }
 

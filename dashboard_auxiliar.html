@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         xintegrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f1f8e9; /* Very light green background */
+            background-color: #f1f8e9;
             margin: 0;
             padding: 0;
             color: #333;
@@ -27,7 +28,7 @@
         }
 
         header {
-            background-color: #66bb6a; /* Main green color */
+            background-color: #66bb6a;
             color: white;
             padding: 20px;
             display: flex;
@@ -67,7 +68,7 @@
         }
 
         .main-nav {
-            background-color: #4caf50; /* Darker green for navigation */
+            background-color: #4caf50; 
             color: white;
             padding: 15px 0;
         }
@@ -78,7 +79,7 @@
             margin: 0;
             display: flex;
             justify-content: space-around;
-            flex-wrap: wrap; /* For responsiveness */
+            flex-wrap: wrap; 
         }
 
         .main-nav li a {
@@ -95,7 +96,7 @@
 
         .main-nav li a:hover,
         .main-nav li a.active {
-            background-color: #388e3c; /* Even darker green on hover/active */
+            background-color: #388e3c;
         }
 
         .content {
@@ -119,7 +120,7 @@
 
         .module-container h2 i {
             margin-right: 8px;
-            color: #4caf50; /* Color for title icon */
+            color: #4caf50; 
         }
 
         .module-container p.module-description {
@@ -127,16 +128,16 @@
             margin-bottom: 15px;
         }
 
-        /* Styles for hiding/showing sections */
+      
         .content section {
-            display: none; /* All sections hidden by default */
+            display: none; 
         }
 
         .content section.active-section {
-            display: block; /* Active section is shown */
+            display: block; 
         }
 
-        /* Specific styles for student/task lists */
+     
         .student-list, .resource-grid, .message-list, .history-list {
             list-style-type: none;
             padding: 0;
@@ -298,7 +299,7 @@
                 </div>
             </div>
             <button class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                <i class="fas fa-sign-out-alt"></i> Salir
             </button>
         </header>
 
@@ -314,7 +315,7 @@
         <main class="content">
             <section id="refuerzos-asignados" class="module-container active-section">
                 <h2><i class="fas fa-child"></i> Alumnos Asignados para Refuerzo</h2>
-                <p class="module-description">Here you will find the list of students who need your special support, assigned by the teachers.</p>
+                <p class="module-description">Aquí encontrarás el listado de estudiantes que necesitan de tu apoyo especial, asignado por los profesores.</p>
                 <ul class="student-list">
                     <li>
                         <div class="student-info">
